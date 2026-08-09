@@ -194,6 +194,7 @@ footer{
 }
 .lightbox.open{display:block}
 .lightbox img{display:block;max-width:1400px;width:100%;margin:0 auto;border:1px solid rgba(246,241,231,.2)}
+.lightbox video{display:none;max-width:1400px;width:100%;margin:26px auto 0;border:1px solid rgba(246,241,231,.2)}
 .lightbox .close{
   position:fixed;top:22px;right:26px;font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;
   color:var(--paper);background:var(--accent);border:none;padding:10px 18px;cursor:pointer;text-transform:uppercase;
@@ -255,7 +256,7 @@ footer{
   </div>
 
   <article class="project reveal">
-    <div class="p-media" data-full="assets/AquaVision.jpg">
+    <div class="p-media" data-full="assets/AquaVision.jpg" data-video="assets/AquaVision_full.mp4">
       <video src="assets/AquaVision.mp4" poster="assets/AquaVision.jpg" autoplay muted loop playsinline preload="metadata"></video>
       <span class="zoom">View full design</span>
     </div>
@@ -264,7 +265,7 @@ footer{
       <h3 class="p-title">AquaVision — Swimwear E-commerce</h3>
       <p class="p-desc">A crisp, aquatic e-commerce concept for a swim goggles brand — layered gradient product cards, motion-led storytelling and a clean checkout path designed to showcase new arrivals.</p>
       <div class="tags"><span class="tag">Web Design</span><span class="tag">E-commerce</span><span class="tag">UI</span></div>
-      <button class="p-link" data-full="assets/AquaVision.jpg">View full design →</button>
+      <button class="p-link" data-full="assets/AquaVision.jpg" data-video="assets/AquaVision_full.mp4">View full design →</button>
     </div>
   </article>
 
@@ -502,6 +503,7 @@ footer{
 <div class="lightbox" id="lightbox">
   <button class="close">Close ✕</button>
   <img src="" alt="Full design view" id="lightbox-img">
+  <video id="lightbox-video" muted loop playsinline></video>
 </div>
 
 <script>
@@ -510,11 +512,19 @@ const io=new IntersectionObserver(es=>{
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightbox-img');
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightbox-img'),lbVideo=document.getElementById('lightbox-video');
 document.querySelectorAll('[data-full]').forEach(el=>{
-  el.addEventListener('click',()=>{lbImg.src=el.dataset.full;lb.classList.add('open');document.body.style.overflow='hidden'});
+  el.addEventListener('click',()=>{
+    lbImg.src=el.dataset.full;
+    if(el.dataset.video){lbVideo.src=el.dataset.video;lbVideo.style.display='block';lbVideo.play()}
+    else{lbVideo.removeAttribute('src');lbVideo.style.display='none'}
+    lb.classList.add('open');document.body.style.overflow='hidden';
+  });
 });
-lb.addEventListener('click',()=>{lb.classList.remove('open');lbImg.src='';document.body.style.overflow=''});
+lb.addEventListener('click',()=>{
+  lb.classList.remove('open');lbImg.src='';document.body.style.overflow='';
+  lbVideo.pause();lbVideo.removeAttribute('src');lbVideo.style.display='none';
+});
 </script>
 </body>
 </html>
