@@ -94,9 +94,9 @@ section{padding:110px 0}
   position:relative;overflow:hidden;cursor:zoom-in;
   transition:transform .5s cubic-bezier(.2,.7,.2,1);
 }
-.p-media img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .6s}
+.p-media img,.p-media video{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .6s}
 .project:hover .p-media{transform:translateY(-6px) rotate(-.4deg)}
-.project:hover .p-media img{transform:scale(1.03)}
+.project:hover .p-media img,.project:hover .p-media video{transform:scale(1.03)}
 .p-media .zoom{
   position:absolute;bottom:12px;right:12px;background:var(--ink);color:var(--paper);
   font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
@@ -255,12 +255,26 @@ footer{
   </div>
 
   <article class="project reveal">
+    <div class="p-media" data-full="assets/AquaVision.jpg">
+      <video src="assets/AquaVision.mp4" poster="assets/AquaVision.jpg" autoplay muted loop playsinline preload="metadata"></video>
+      <span class="zoom">View full design</span>
+    </div>
+    <div class="p-body">
+      <div class="p-index">WEB DESIGN — 01</div>
+      <h3 class="p-title">AquaVision — Swimwear E-commerce</h3>
+      <p class="p-desc">A crisp, aquatic e-commerce concept for a swim goggles brand — layered gradient product cards, motion-led storytelling and a clean checkout path designed to showcase new arrivals.</p>
+      <div class="tags"><span class="tag">Web Design</span><span class="tag">E-commerce</span><span class="tag">UI</span></div>
+      <button class="p-link" data-full="assets/AquaVision.jpg">View full design →</button>
+    </div>
+  </article>
+
+  <article class="project reveal">
     <div class="p-media" data-full="assets/drpaul_page_v2.jpg">
       <img src="assets/drpaul_card_v2.jpg" alt="Dr Paul e-commerce website design" loading="lazy">
       <span class="zoom">View full design</span>
     </div>
     <div class="p-body">
-      <div class="p-index">E-COMMERCE — 01</div>
+      <div class="p-index">E-COMMERCE — 02</div>
       <h3 class="p-title">Dr Paul — Hair Care Brand</h3>
       <p class="p-desc">End-to-end UI/UX for a full e-commerce brand: 15+ responsive pages designed, tested and shipped on Shopify. UX research surfaced three major pain points; iterating on them drove a 25% lift in repeat purchases and 30% month-on-month organic traffic growth.</p>
       <div class="tags"><span class="tag">Shopify</span><span class="tag">UX Research</span><span class="tag">Design System</span><span class="tag">Analytics</span></div>
@@ -274,7 +288,7 @@ footer{
       <span class="zoom">View full design</span>
     </div>
     <div class="p-body">
-      <div class="p-index">UX CASE STUDY — 02</div>
+      <div class="p-index">UX CASE STUDY — 03</div>
       <h3 class="p-title">Read Wave — Blogging Platform</h3>
       <p class="p-desc">A complete UX case study for a modern blogging platform — from user personas and journey mapping through wireframes to a full high-fidelity UI kit covering reading, writing and discovery flows. Full process shown below.</p>
       <div class="tags"><span class="tag">Personas</span><span class="tag">User Flows</span><span class="tag">Wireframes</span><span class="tag">UI Kit</span></div>
@@ -288,7 +302,7 @@ footer{
       <span class="zoom">View full design</span>
     </div>
     <div class="p-body">
-      <div class="p-index">PRODUCT LANDING — 03</div>
+      <div class="p-index">PRODUCT LANDING — 04</div>
       <h3 class="p-title">AURIS — Audio Product Landing</h3>
       <p class="p-desc">A dark, cinematic landing page concept for a premium headphone brand — bold product photography, dramatic type and a conversion-focused narrative from hero to checkout.</p>
       <div class="tags"><span class="tag">Landing Page</span><span class="tag">Art Direction</span><span class="tag">Figma</span></div>
@@ -302,7 +316,7 @@ footer{
       <span class="zoom">View full design</span>
     </div>
     <div class="p-body">
-      <div class="p-index">CONCEPT REDESIGN — 04</div>
+      <div class="p-index">CONCEPT REDESIGN — 05</div>
       <h3 class="p-title">Sephora — Homepage Concept</h3>
       <p class="p-desc">A concept redesign of the Sephora homepage — restructuring merchandising hierarchy, elevating product discovery and bringing a cleaner, editorial feel to a busy beauty e-commerce experience.</p>
       <div class="tags"><span class="tag">E-commerce</span><span class="tag">Visual Design</span><span class="tag">UX</span></div>
@@ -316,7 +330,7 @@ footer{
       <span class="zoom">View full design</span>
     </div>
     <div class="p-body">
-      <div class="p-index">HOSPITALITY — 05</div>
+      <div class="p-index">HOSPITALITY — 06</div>
       <h3 class="p-title">Malabar — Restaurant Concept</h3>
       <p class="p-desc">A rich, atmospheric website concept for an Indian restaurant — moody photography, warm spice-inspired palette and an elegant menu and booking experience.</p>
       <div class="tags"><span class="tag">Web Design</span><span class="tag">Branding</span><span class="tag">Concept</span></div>
@@ -330,7 +344,7 @@ footer{
       <span class="zoom">View full design</span>
     </div>
     <div class="p-body">
-      <div class="p-index">CORPORATE — 06</div>
+      <div class="p-index">CORPORATE — 07</div>
       <h3 class="p-title">Nexcon — Construction &amp; Architecture</h3>
       <p class="p-desc">A confident corporate site for a construction firm — strong grid, industrial dark theme with a sharp accent, and clear service and project storytelling built for trust.</p>
       <div class="tags"><span class="tag">Corporate</span><span class="tag">Web Design</span><span class="tag">UI</span></div>
@@ -344,7 +358,7 @@ footer{
       <span class="zoom">View full design</span>
     </div>
     <div class="p-body">
-      <div class="p-index">HEALTH &amp; WELLNESS — 07</div>
+      <div class="p-index">HEALTH &amp; WELLNESS — 08</div>
       <h3 class="p-title">Vitly — Supplement Brand</h3>
       <p class="p-desc">A bright, friendly landing page for a vitamin brand — playful colour, clean product presentation and benefit-led sections designed to convert health-conscious shoppers.</p>
       <div class="tags"><span class="tag">Landing Page</span><span class="tag">E-commerce</span><span class="tag">UI</span></div>
