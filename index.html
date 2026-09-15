@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rishitha L. Shilpa — UI/UX Designer</title>
 <meta name="description" content="Rishitha L. Shilpa — UI/UX Designer based in Nottingham, UK. 5+ years designing user-centred digital experiences across e-commerce, SaaS and mobile.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1815'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' fill='%23C84B1E' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,17 +33,30 @@ body::after{
 }
 ::selection{background:var(--accent);color:var(--paper)}
 .wrap{max-width:1200px;margin:0 auto;padding:0 6vw}
+section[id],header[id]{scroll-margin-top:86px}
+
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:200;width:0%;transition:width .1s linear}
 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;
-  align-items:center;padding:20px 6vw;background:linear-gradient(var(--paper) 60%,transparent);
+  align-items:center;padding:20px 6vw;background:linear-gradient(var(--paper) 62%,transparent);
 }
-nav .logo{font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+nav .logo{font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink);position:relative;z-index:102}
 nav .logo em{color:var(--accent);font-style:normal}
 nav ul{display:flex;gap:34px;list-style:none}
-nav a{color:var(--ink-soft);text-decoration:none;font-size:.82rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;transition:color .2s}
-nav a:hover{color:var(--accent)}
+nav a{color:var(--ink-soft);text-decoration:none;font-size:.82rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;transition:color .25s;position:relative;padding-bottom:3px}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .3s cubic-bezier(.2,.7,.2,1)}
+nav a:hover{color:var(--ink)}
+nav a:hover::after{width:100%}
+
+/* MOBILE NAV TOGGLE */
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:102}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--ink);transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .3s}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
 /* HERO */
 header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:80px}
@@ -56,7 +70,13 @@ h1{font-family:var(--serif);font-weight:300;letter-spacing:-.03em;font-size:clam
 h1 .l{display:block;opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
 h1 .l:nth-child(1){animation-delay:.2s}
 h1 .l:nth-child(2){animation-delay:.32s}
-h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+h1 em{
+  font-style:italic;font-weight:400;
+  background:linear-gradient(100deg,var(--accent) 30%,#e8896a 50%,var(--accent) 70%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 6s ease-in-out infinite;
+}
+@keyframes shimmer{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
 .hero-foot{
   display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;
   margin-top:56px;opacity:0;animation:rise .9s .55s cubic-bezier(.2,.7,.2,1) forwards;
@@ -95,7 +115,7 @@ section{padding:110px 0}
   transition:transform .5s cubic-bezier(.2,.7,.2,1);
 }
 .p-media img,.p-media video{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .6s}
-.project:hover .p-media{transform:translateY(-6px) rotate(-.4deg)}
+.project:hover .p-media{transform:translateY(-6px) rotate(-.4deg);box-shadow:0 22px 44px -18px rgba(26,24,21,.35)}
 .project:hover .p-media img,.project:hover .p-media video{transform:scale(1.03)}
 .p-media .zoom{
   position:absolute;bottom:12px;right:12px;background:var(--ink);color:var(--paper);
@@ -111,7 +131,9 @@ section{padding:110px 0}
 .tag{
   font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
   border:1px solid var(--line);padding:6px 12px;border-radius:100px;color:var(--ink-soft);
+  transition:background .25s,color .25s,border-color .25s;
 }
+.project:hover .tag{border-color:var(--accent);color:var(--ink)}
 .p-link{
   display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:none;border:none;cursor:pointer;
   font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
@@ -119,12 +141,15 @@ section{padding:110px 0}
   transition:color .2s,gap .2s;
 }
 .p-link:hover{color:var(--accent);gap:14px}
+.p-link span{display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.p-link:hover span{transform:translateX(4px)}
 
 /* MORE WORK GRID */
 .more-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
-.mini{position:relative;border:1px solid var(--line);background:var(--paper-deep);cursor:zoom-in;overflow:hidden;transition:transform .35s}
-.mini:hover{transform:translateY(-5px)}
-.mini img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:top;display:block}
+.mini{position:relative;border:1px solid var(--line);background:var(--paper-deep);cursor:zoom-in;overflow:hidden;transition:transform .35s,box-shadow .35s}
+.mini:hover{transform:translateY(-5px);box-shadow:0 20px 38px -20px rgba(26,24,21,.32)}
+.mini img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+.mini:hover img{transform:scale(1.05)}
 .mini figcaption{
   font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
   padding:13px 15px;border-top:1px solid var(--line);color:var(--ink-soft);background:var(--paper);
@@ -132,7 +157,8 @@ section{padding:110px 0}
 
 /* CASE STUDY STRIP */
 .cs-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:30px}
-.cs-strip figure{border:1px solid var(--line);cursor:zoom-in;overflow:hidden}
+.cs-strip figure{border:1px solid var(--line);cursor:zoom-in;overflow:hidden;transition:box-shadow .35s,transform .35s}
+.cs-strip figure:hover{transform:translateY(-4px);box-shadow:0 20px 38px -20px rgba(26,24,21,.32)}
 .cs-strip img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;transition:transform .4s}
 .cs-strip figure:hover img{transform:scale(1.04)}
 .cs-strip figcaption{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;color:var(--ink-soft);border-top:1px solid var(--line)}
@@ -158,16 +184,22 @@ section{padding:110px 0}
 
 /* SKILLS */
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.skill-cell{background:var(--paper);padding:36px 30px;transition:background .3s}
-.skill-cell:hover{background:var(--paper-deep)}
+.skill-cell{background:var(--paper);padding:36px 30px;transition:background .3s,transform .3s cubic-bezier(.2,.7,.2,1);position:relative;z-index:1}
+.skill-cell:hover{background:var(--paper-deep);transform:translateY(-4px);box-shadow:0 18px 34px -20px rgba(26,24,21,.3)}
 .skill-cell h3{font-family:var(--serif);font-weight:500;font-size:1.15rem;margin-bottom:14px}
-.skill-cell h3::before{content:"◆ ";color:var(--accent);font-size:.7em;vertical-align:2px}
+.skill-cell h3::before{content:"◆ ";color:var(--accent);font-size:.7em;vertical-align:2px;display:inline-block;transition:transform .4s}
+.skill-cell:hover h3::before{transform:rotate(90deg)}
 .skill-cell p{color:var(--ink-soft);font-size:.92rem}
 
 /* CONTACT */
 #contact{padding:130px 0 60px}
 .contact-big{font-family:var(--serif);font-weight:300;letter-spacing:-.03em;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1.05;max-width:16ch}
-.contact-big em{font-style:italic;color:var(--accent)}
+.contact-big em{
+  font-style:italic;
+  background:linear-gradient(100deg,var(--accent) 30%,#e8896a 50%,var(--accent) 70%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 6s ease-in-out infinite;
+}
 .contact-row{display:flex;gap:44px;flex-wrap:wrap;margin-top:52px}
 .contact-row a{
   font-family:var(--mono);font-size:.85rem;letter-spacing:.06em;color:var(--ink);
@@ -195,13 +227,22 @@ footer{
 .lightbox.open{display:block}
 .lightbox img{display:block;max-width:1400px;width:100%;margin:0 auto;border:1px solid rgba(246,241,231,.2)}
 .lightbox video{display:none;max-width:1400px;width:100%;margin:0 auto 26px;border:1px solid rgba(246,241,231,.2)}
+.lightbox-gallery{display:none;max-width:760px;margin:0 auto;flex-direction:column;gap:22px}
+.lightbox-gallery img{max-width:100%;width:100%;border:1px solid rgba(246,241,231,.2)}
 .lightbox .close{
   position:fixed;top:22px;right:26px;font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;
   color:var(--paper);background:var(--accent);border:none;padding:10px 18px;cursor:pointer;text-transform:uppercase;
 }
 
 @media(max-width:820px){
-  nav ul{display:none}
+  .nav-toggle{display:flex}
+  nav ul{
+    display:flex;flex-direction:column;position:fixed;inset:0;background:var(--paper);
+    justify-content:center;align-items:center;gap:34px;z-index:101;
+    opacity:0;pointer-events:none;transform:translateY(-12px);transition:opacity .35s,transform .35s;
+  }
+  nav ul.open{opacity:1;pointer-events:auto;transform:none}
+  nav ul a{font-size:1.05rem}
   .project{grid-template-columns:1fr;gap:28px}
   .project:nth-child(even) .p-media{order:0}
   .p-body{padding:0}
@@ -212,9 +253,11 @@ footer{
 </head>
 <body>
 
+<div class="scroll-progress" id="scroll-progress"></div>
 <nav>
   <a class="logo" href="#top">R<em>.</em>Shilpa — <em>Portfolio</em></a>
-  <ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  <ul id="nav-menu">
     <li><a href="#work">Work</a></li>
     <li><a href="#casestudy">Case Study</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -265,7 +308,7 @@ footer{
       <h3 class="p-title">AquaVision — Swimwear E-commerce</h3>
       <p class="p-desc">A crisp, aquatic e-commerce concept for a swim goggles brand — layered gradient product cards, motion-led storytelling and a clean checkout path designed to showcase new arrivals.</p>
       <div class="tags"><span class="tag">Web Design</span><span class="tag">E-commerce</span><span class="tag">UI</span></div>
-      <button class="p-link" data-full="assets/AquaVision.jpg" data-video="assets/AquaVision_full.mp4">View full design →</button>
+      <button class="p-link" data-full="assets/AquaVision.jpg" data-video="assets/AquaVision_full.mp4">View full design <span>→</span></button>
     </div>
   </article>
 
@@ -279,7 +322,7 @@ footer{
       <h3 class="p-title">Dr Paul — Hair Care Brand</h3>
       <p class="p-desc">End-to-end UI/UX for a full e-commerce brand: 15+ responsive pages designed, tested and shipped on Shopify. UX research surfaced three major pain points; iterating on them drove a 25% lift in repeat purchases and 30% month-on-month organic traffic growth.</p>
       <div class="tags"><span class="tag">Shopify</span><span class="tag">UX Research</span><span class="tag">Design System</span><span class="tag">Analytics</span></div>
-      <button class="p-link" data-full="assets/drpaul_page_v2.jpg">View full design →</button>
+      <button class="p-link" data-full="assets/drpaul_page_v2.jpg">View full design <span>→</span></button>
     </div>
   </article>
 
@@ -293,7 +336,7 @@ footer{
       <h3 class="p-title">Read Wave — Blogging Platform</h3>
       <p class="p-desc">A complete UX case study for a modern blogging platform — from user personas and journey mapping through wireframes to a full high-fidelity UI kit covering reading, writing and discovery flows. Full process shown below.</p>
       <div class="tags"><span class="tag">Personas</span><span class="tag">User Flows</span><span class="tag">Wireframes</span><span class="tag">UI Kit</span></div>
-      <button class="p-link" data-full="assets/readwave_page_v2.jpg">View full design →</button>
+      <button class="p-link" data-full="assets/readwave_page_v2.jpg">View full design <span>→</span></button>
     </div>
   </article>
 
@@ -307,7 +350,7 @@ footer{
       <h3 class="p-title">AURIS — Audio Product Landing</h3>
       <p class="p-desc">A dark, cinematic landing page concept for a premium headphone brand — bold product photography, dramatic type and a conversion-focused narrative from hero to checkout.</p>
       <div class="tags"><span class="tag">Landing Page</span><span class="tag">Art Direction</span><span class="tag">Figma</span></div>
-      <button class="p-link" data-full="assets/auris_page_v2.jpg">View full design →</button>
+      <button class="p-link" data-full="assets/auris_page_v2.jpg">View full design <span>→</span></button>
     </div>
   </article>
 
@@ -321,7 +364,7 @@ footer{
       <h3 class="p-title">Sephora — Homepage Concept</h3>
       <p class="p-desc">A concept redesign of the Sephora homepage — restructuring merchandising hierarchy, elevating product discovery and bringing a cleaner, editorial feel to a busy beauty e-commerce experience.</p>
       <div class="tags"><span class="tag">E-commerce</span><span class="tag">Visual Design</span><span class="tag">UX</span></div>
-      <button class="p-link" data-full="assets/sephora_page_v2.jpg">View full design →</button>
+      <button class="p-link" data-full="assets/sephora_page_v2.jpg">View full design <span>→</span></button>
     </div>
   </article>
 
@@ -335,7 +378,7 @@ footer{
       <h3 class="p-title">Malabar — Restaurant Concept</h3>
       <p class="p-desc">A rich, atmospheric website concept for an Indian restaurant — moody photography, warm spice-inspired palette and an elegant menu and booking experience.</p>
       <div class="tags"><span class="tag">Web Design</span><span class="tag">Branding</span><span class="tag">Concept</span></div>
-      <button class="p-link" data-full="assets/malabar_page_v2.jpg">View full design →</button>
+      <button class="p-link" data-full="assets/malabar_page_v2.jpg">View full design <span>→</span></button>
     </div>
   </article>
 
@@ -349,7 +392,7 @@ footer{
       <h3 class="p-title">Nexcon — Construction &amp; Architecture</h3>
       <p class="p-desc">A confident corporate site for a construction firm — strong grid, industrial dark theme with a sharp accent, and clear service and project storytelling built for trust.</p>
       <div class="tags"><span class="tag">Corporate</span><span class="tag">Web Design</span><span class="tag">UI</span></div>
-      <button class="p-link" data-full="assets/nexcon_page_v2.jpg">View full design →</button>
+      <button class="p-link" data-full="assets/nexcon_page_v2.jpg">View full design <span>→</span></button>
     </div>
   </article>
 
@@ -363,7 +406,35 @@ footer{
       <h3 class="p-title">Vitly — Supplement Brand</h3>
       <p class="p-desc">A bright, friendly landing page for a vitamin brand — playful colour, clean product presentation and benefit-led sections designed to convert health-conscious shoppers.</p>
       <div class="tags"><span class="tag">Landing Page</span><span class="tag">E-commerce</span><span class="tag">UI</span></div>
-      <button class="p-link" data-full="assets/vitly_page_v2.jpg">View full design →</button>
+      <button class="p-link" data-full="assets/vitly_page_v2.jpg">View full design <span>→</span></button>
+    </div>
+  </article>
+
+  <article class="project reveal">
+    <div class="p-media" data-gallery="assets/social_1_v2.jpg,assets/social_2_v2.jpg,assets/social_3_v2.jpg,assets/social_4_v2.jpg,assets/social_5_v2.jpg,assets/social_6_v2.jpg,assets/social_7_v2.jpg,assets/social_8_v2.jpg,assets/social_9_v2.jpg,assets/social_10_v2.jpg">
+      <img src="assets/social_card_v2.jpg" alt="Dr Paul social media content design" loading="lazy">
+      <span class="zoom">View gallery</span>
+    </div>
+    <div class="p-body">
+      <div class="p-index">SOCIAL MEDIA — 09</div>
+      <h3 class="p-title">Dr Paul — Social Media Content</h3>
+      <p class="p-desc">Ongoing organic content design for the Dr Paul brand — product features, pet-health tips, engagement posts and giveaways, all built to a consistent visual system across Instagram and Facebook.</p>
+      <div class="tags"><span class="tag">Social Media</span><span class="tag">Content Design</span><span class="tag">Branding</span></div>
+      <button class="p-link" data-gallery="assets/social_1_v2.jpg,assets/social_2_v2.jpg,assets/social_3_v2.jpg,assets/social_4_v2.jpg,assets/social_5_v2.jpg,assets/social_6_v2.jpg,assets/social_7_v2.jpg,assets/social_8_v2.jpg,assets/social_9_v2.jpg,assets/social_10_v2.jpg">View gallery <span>→</span></button>
+    </div>
+  </article>
+
+  <article class="project reveal">
+    <div class="p-media" data-gallery="assets/logo_1_v2.jpg,assets/logo_2_v2.jpg,assets/logo_3_v2.jpg,assets/logo_4_v2.jpg,assets/logo_5_v2.jpg,assets/logo_6_v2.jpg,assets/logo_7_v2.jpg">
+      <img src="assets/logo_card_v2.jpg" alt="Logo and brand identity design" loading="lazy">
+      <span class="zoom">View gallery</span>
+    </div>
+    <div class="p-body">
+      <div class="p-index">BRAND IDENTITY — 10</div>
+      <h3 class="p-title">Logo &amp; Brand Identity</h3>
+      <p class="p-desc">A selection of logo and mark explorations across four brands — from a playful nut-brand splash mark to a refined tree-and-profile identity for a wellness label — each pushed through multiple concepts and colourways before landing on a final direction.</p>
+      <div class="tags"><span class="tag">Logo Design</span><span class="tag">Brand Identity</span><span class="tag">Illustrator</span></div>
+      <button class="p-link" data-gallery="assets/logo_1_v2.jpg,assets/logo_2_v2.jpg,assets/logo_3_v2.jpg,assets/logo_4_v2.jpg,assets/logo_5_v2.jpg,assets/logo_6_v2.jpg,assets/logo_7_v2.jpg">View gallery <span>→</span></button>
     </div>
   </article>
 </section>
@@ -413,7 +484,7 @@ footer{
       <div>
         <div class="xp-role">UI/UX Designer</div>
         <div class="xp-org">Dr Paul · London, UK</div>
-        <div class="xp-desc">Own 100% of design for an e-commerce brand — 15+ pages shipped, 25% lift in repeat purchases, 30% MoM organic traffic growth.</div>
+        <div class="xp-desc">Own 100% of design for an e-commerce brand — 15+ pages shipped, 25% lift in repeat purchases, 30% MoM organic traffic growth. Work embedded in the marketing team producing social media content, brochures, packaging and print assets alongside the core UI/UX work.</div>
       </div>
       <span class="xp-now">Current</span>
     </div>
@@ -479,6 +550,10 @@ footer{
       <h3>Data &amp; AI-Driven</h3>
       <p>Google Analytics, Meta Ads Manager and Shopify Analytics to inform design decisions; AI tools (Claude, Midjourney, ChatGPT) for rapid ideation.</p>
     </div>
+    <div class="skill-cell">
+      <h3>Graphic Design &amp; Print</h3>
+      <p>Social media content, brochures, packaging and marketing assets designed within a marketing team — brand-consistent collateral across digital and print.</p>
+    </div>
   </div>
 </section>
 
@@ -504,26 +579,53 @@ footer{
   <button class="close">Close ✕</button>
   <video id="lightbox-video" muted loop playsinline></video>
   <img src="" alt="Full design view" id="lightbox-img">
+  <div class="lightbox-gallery" id="lightbox-gallery"></div>
 </div>
 
 <script>
+const navToggle=document.getElementById('nav-toggle'),navMenu=document.getElementById('nav-menu');
+navToggle.addEventListener('click',()=>{
+  navToggle.classList.toggle('open');navMenu.classList.toggle('open');
+  document.body.style.overflow=navMenu.classList.contains('open')?'hidden':'';
+});
+navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navToggle.classList.remove('open');navMenu.classList.remove('open');document.body.style.overflow='';
+}));
+
+const progressBar=document.getElementById('scroll-progress');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+  progressBar.style.width=pct+'%';
+},{passive:true});
+
 const io=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightbox-img'),lbVideo=document.getElementById('lightbox-video');
-document.querySelectorAll('[data-full]').forEach(el=>{
-  el.addEventListener('click',()=>{
-    lbImg.src=el.dataset.full;
-    if(el.dataset.video){lbVideo.src=el.dataset.video;lbVideo.style.display='block';lbVideo.play()}
-    else{lbVideo.removeAttribute('src');lbVideo.style.display='none'}
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightbox-img'),lbVideo=document.getElementById('lightbox-video'),lbGallery=document.getElementById('lightbox-gallery');
+document.querySelectorAll('[data-full],[data-gallery]').forEach(el=>{
+  el.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    if(el.dataset.gallery){
+      lbGallery.innerHTML=el.dataset.gallery.split(',').map(src=>`<img src="${src}" alt="">`).join('');
+      lbGallery.style.display='flex';
+      lbImg.style.display='none';lbImg.src='';
+      lbVideo.pause();lbVideo.removeAttribute('src');lbVideo.style.display='none';
+    }else{
+      lbGallery.style.display='none';lbGallery.innerHTML='';
+      lbImg.style.display='block';lbImg.src=el.dataset.full;
+      if(el.dataset.video){lbVideo.src=el.dataset.video;lbVideo.style.display='block';lbVideo.play()}
+      else{lbVideo.removeAttribute('src');lbVideo.style.display='none'}
+    }
     lb.classList.add('open');document.body.style.overflow='hidden';
   });
 });
 lb.addEventListener('click',()=>{
   lb.classList.remove('open');lbImg.src='';document.body.style.overflow='';
   lbVideo.pause();lbVideo.removeAttribute('src');lbVideo.style.display='none';
+  lbGallery.style.display='none';lbGallery.innerHTML='';
 });
 </script>
 </body>
