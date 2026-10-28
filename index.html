@@ -1,632 +1,761 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rishitha L. Shilpa — UI/UX Designer</title>
-<meta name="description" content="Rishitha L. Shilpa — UI/UX Designer based in Nottingham, UK. 5+ years designing user-centred digital experiences across e-commerce, SaaS and mobile.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231A1815'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' fill='%23C84B1E' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rishitha — Portfolio 2026</title>
+<meta name="description" content="Portfolio 2026 — Rishitha L. Shilpa, UI/UX designer &amp; developer in Nottingham, UK. UI/UX, web design, social media, branding and AI creative.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F6F1E7;
-  --paper-deep:#EFE7D6;
-  --ink:#1A1815;
-  --ink-soft:#4A453C;
-  --accent:#C84B1E;
-  --line:rgba(26,24,21,.18);
-  --mono:'IBM Plex Mono',monospace;
-  --serif:'Fraunces',serif;
-  --sans:'Hanken Grotesk',sans-serif;
+  --bg:#ffffff;
+  --panel:#f4f3f1;
+  --panel-2:#eae8e5;
+  --orange:#e8582a;
+  --orange-hi:#ff7a45;
+  --rust:#7a2a10;
+  --text:#111111;
+  --muted:rgba(17,17,17,.55);
+  --hair:rgba(0,0,0,.08);
+  --font:'Inter Tight',system-ui,sans-serif;
+  --gut:clamp(16px,5vw,96px);
+  --ribs:repeating-linear-gradient(90deg,rgba(255,255,255,.09) 0,rgba(255,255,255,0) 5px,rgba(0,0,0,.14) 30px,rgba(255,255,255,.09) 36px);
+  --fire:linear-gradient(100deg,#0c0504 0%,#2c0f06 28%,#8f3212 58%,#d9532a 82%,#ee6a37 100%);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  background:var(--paper);color:var(--ink);font-family:var(--sans);
-  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-::selection{background:var(--accent);color:var(--paper)}
-.wrap{max-width:1200px;margin:0 auto;padding:0 6vw}
-section[id],header[id]{scroll-margin-top:86px}
+body{background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--orange);color:#fff}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
 
-/* SCROLL PROGRESS */
-.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:200;width:0%;transition:width .1s linear}
+/* fading text, as in the reference headlines */
+.fade-v{background:linear-gradient(180deg,#fff 35%,rgba(255,255,255,.55));-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;
-  align-items:center;padding:20px 6vw;background:linear-gradient(var(--paper) 62%,transparent);
-}
-nav .logo{font-family:var(--serif);font-weight:600;font-size:1.15rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink);position:relative;z-index:102}
-nav .logo em{color:var(--accent);font-style:normal}
-nav ul{display:flex;gap:34px;list-style:none}
-nav a{color:var(--ink-soft);text-decoration:none;font-size:.82rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;transition:color .25s;position:relative;padding-bottom:3px}
-nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .3s cubic-bezier(.2,.7,.2,1)}
-nav a:hover{color:var(--ink)}
-nav a:hover::after{width:100%}
+/* film grain */
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.12;mix-blend-mode:overlay;border-radius:inherit;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* MOBILE NAV TOGGLE */
-.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:102}
-.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--ink);transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .3s}
-.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.nav-toggle.open span:nth-child(2){opacity:0}
-.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+/* monogram */
+.mark{width:88px;height:88px;color:#fff}
+.mark.dark{color:var(--orange)}
 
-/* HERO */
-header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:80px}
-.kicker{
-  font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:28px;
-  opacity:0;animation:rise .8s .1s cubic-bezier(.2,.7,.2,1) forwards;
-}
-.kicker::before{content:"";width:44px;height:1px;background:var(--accent)}
-h1{font-family:var(--serif);font-weight:300;letter-spacing:-.03em;font-size:clamp(2.7rem,7.6vw,6.6rem);line-height:1.03;max-width:15ch}
-h1 .l{display:block;opacity:0;animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
-h1 .l:nth-child(1){animation-delay:.2s}
-h1 .l:nth-child(2){animation-delay:.32s}
-h1 em{
-  font-style:italic;font-weight:400;
-  background:linear-gradient(100deg,var(--accent) 30%,#e8896a 50%,var(--accent) 70%);
-  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:shimmer 6s ease-in-out infinite;
-}
-@keyframes shimmer{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
-.hero-foot{
-  display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;
-  margin-top:56px;opacity:0;animation:rise .9s .55s cubic-bezier(.2,.7,.2,1) forwards;
-}
-.hero-foot p{max-width:46ch;color:var(--ink-soft);font-size:1.05rem}
-.hero-meta{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);text-align:right;line-height:2}
-.hero-meta b{color:var(--ink);font-weight:500}
-.scroll-cue{
-  position:absolute;bottom:34px;left:6vw;font-family:var(--mono);font-size:.72rem;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
-  display:flex;align-items:center;gap:10px;opacity:0;animation:rise 1s .8s forwards;
-}
-.scroll-cue span{display:inline-block;width:1px;height:38px;background:var(--ink-soft);animation:drip 1.8s infinite}
-@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+/* glass pill */
+.chip{display:inline-block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-radius:999px;padding:.5em 1.4em;font-size:clamp(14px,1.35vw,22px);font-weight:400;letter-spacing:-.02em;transition:background .3s,border-color .3s}
+.chip:hover{background:var(--orange);border-color:var(--orange)}
 
-/* SECTIONS */
-section{padding:110px 0}
-.sec-head{display:flex;align-items:baseline;gap:24px;margin-bottom:64px}
-.sec-num{font-family:var(--mono);font-size:.8rem;color:var(--accent)}
-.sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.02em}
-.sec-line{flex:1;height:1px;background:var(--line)}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+/* ---------- HERO ---------- */
+.hero,.thanks{color:#fff}
+.hero{min-height:calc(100vh - 28px);margin:14px;border-radius:clamp(18px,2vw,30px);padding:36px var(--gut) 56px;display:flex;flex-direction:column;
+  background:var(--ribs),var(--fire);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.hero .mark{width:clamp(64px,6.5vw,104px);height:auto}
+.hero-photo{position:absolute;right:0;bottom:0;height:100%;width:auto;max-width:62%;object-fit:cover;object-position:left bottom;z-index:-1;
+  mix-blend-mode:luminosity;filter:contrast(1.45) brightness(.62);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(0deg,transparent 0%,#000 18%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(0deg,transparent 0%,#000 18%);mask-composite:intersect;
+  opacity:0;animation:fadein 1.4s .2s ease forwards}
+@keyframes fadein{to{opacity:1}}
+.hero::before{content:"";position:absolute;inset:0;background:var(--ribs);pointer-events:none;z-index:0;border-radius:inherit}
+.hero>.mark,.hero-body{position:relative;z-index:1}
+.hero-body{margin-top:auto}
+.year{font-weight:300;font-size:clamp(48px,7vw,120px);line-height:.9;letter-spacing:-.05em;opacity:0;animation:up .9s .1s cubic-bezier(.2,.7,.2,1) forwards}
+.big{font-weight:500;font-size:clamp(78px,17.5vw,360px);line-height:.86;letter-spacing:-.075em;margin:.02em 0 .14em -.05em;padding-right:.1em;
+  background:linear-gradient(90deg,#fff 0%,#fff 52%,rgba(255,255,255,.28) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:0;animation:up 1s .25s cubic-bezier(.2,.7,.2,1) forwards}
+.chips{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .9s .45s cubic-bezier(.2,.7,.2,1) forwards}
+.chips .chip:first-child{background:rgba(0,0,0,.45)}
+.google{margin-top:clamp(36px,6vh,80px);opacity:0;animation:up .9s .6s cubic-bezier(.2,.7,.2,1) forwards}
+.google small{display:block;font-size:clamp(15px,1.4vw,22px);font-weight:300;letter-spacing:-.02em;color:rgba(255,255,255,.75)}
+.google strong{display:block;font-size:clamp(24px,2.6vw,44px);font-weight:500;letter-spacing:-.04em}
+.google em{display:block;font-style:normal;font-size:clamp(13px,1.15vw,19px);font-weight:300;letter-spacing:-.01em;color:rgba(255,255,255,.75);margin-top:6px}
+@keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+
+/* ---------- ABOUT ---------- */
+.about{padding:clamp(80px,12vh,140px) var(--gut);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr) auto;gap:clamp(28px,4vw,64px);align-items:center;
+  background:radial-gradient(60% 70% at 110% 100%,rgba(232,88,42,.16),transparent 70%),radial-gradient(30% 50% at 0% 0%,rgba(232,88,42,.08),transparent 70%),var(--bg);color:var(--text);overflow:hidden}
+.about .chip{background:#fff;border-color:rgba(0,0,0,.14);color:var(--text)}
+.about .chip:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.portrait{aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:var(--ribs),linear-gradient(160deg,#d9532a,#6e250d 70%,#1a0b06);display:grid;place-items:center;box-shadow:0 30px 80px -40px rgba(232,88,42,.6)}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait .mark{width:46%;height:auto}
+.about h2{font-weight:500;font-size:clamp(26px,2.6vw,42px);letter-spacing:-.04em;margin-bottom:10px}
+.about p{font-size:clamp(15px,1.25vw,20px);font-weight:300;line-height:1.5;margin-bottom:34px;max-width:60ch;color:var(--muted)}
+.about .state{font-size:clamp(28px,3.2vw,54px);line-height:1.04;font-weight:300;letter-spacing:-.045em;margin:10px 0 40px;
+  background:linear-gradient(180deg,#111 30%,rgba(17,17,17,.45));-webkit-background-clip:text;background-clip:text;color:transparent}
+.about .state b{font-weight:500}
+.links{display:grid;grid-template-columns:auto 1fr;gap:6px 40px;font-size:clamp(14px,1.1vw,18px);max-width:520px}
+.links dt{font-weight:500}
+.links dd{font-weight:300;text-align:right;color:var(--muted)}
+.links a:hover{color:var(--orange-hi)}
+.stack{display:flex;flex-direction:column;gap:12px}
+.stack .chip{text-align:center;min-width:220px}
+
+/* ---------- CV: stats, experience, skills ---------- */
+.btn{display:inline-flex;align-items:center;gap:14px;margin-top:10px;background:var(--orange);color:#fff;border-radius:999px;padding:6px 6px 6px 22px;font-weight:500;font-size:clamp(14px,1.1vw,17px);box-shadow:0 10px 30px -12px rgba(232,88,42,.8);transition:transform .3s}
+.btn::after{content:"↓";display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#fff;color:var(--orange);font-size:18px}
+.btn:hover{transform:translateY(-2px)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.stat{background:var(--panel);border:1px solid var(--hair);border-radius:22px;padding:clamp(20px,2.2vw,34px);display:flex;flex-direction:column;justify-content:space-between;min-height:clamp(150px,13vw,220px)}
+.stat b{font-size:clamp(48px,5.4vw,96px);font-weight:500;letter-spacing:-.065em;line-height:.9;padding-right:.05em;
+  background:linear-gradient(180deg,#111 40%,rgba(17,17,17,.45));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:clamp(13px,1vw,16px);line-height:1.4;margin-top:14px}
+.stat.hot{background:var(--ribs),var(--fire);border:0;color:#fff}
+.stat.hot b{background:linear-gradient(180deg,#fff 40%,rgba(255,255,255,.55));-webkit-background-clip:text;background-clip:text}
+.stat.hot span{color:rgba(255,255,255,.8)}
+.cv-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(30px,5vw,90px);align-items:start}
+.label{font-size:clamp(12px,.9vw,14px);text-transform:uppercase;letter-spacing:.16em;font-weight:500;color:var(--orange);margin-bottom:clamp(18px,2vw,28px)}
+.jobs{list-style:none;border-left:1px solid rgba(0,0,0,.12);margin-left:5px}
+.jobs li{position:relative;padding:0 0 clamp(26px,3vw,46px) clamp(22px,2.4vw,40px)}
+.jobs li:last-child{padding-bottom:0}
+.jobs li::before{content:"";position:absolute;left:-6px;top:.35em;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--orange)}
+.jobs li:first-child::before{background:var(--orange)}
+.jobs time{font-size:clamp(13px,1vw,15px);color:var(--muted)}
+.jobs h4{font-size:clamp(22px,2.1vw,36px);font-weight:500;letter-spacing:-.045em;line-height:1.08;margin:.2em 0 .15em}
+.jobs .org{font-size:clamp(14px,1.1vw,18px);font-weight:400;letter-spacing:-.02em}
+.jobs p{font-size:clamp(14px,1.1vw,18px);font-weight:300;line-height:1.5;color:var(--muted);max-width:58ch;margin-top:.6em}
+.jobs p b{color:var(--text);font-weight:500}
+.skills{display:grid;gap:10px}
+.skill{background:var(--panel);border:1px solid var(--hair);border-radius:18px;padding:clamp(16px,1.6vw,24px)}
+.skill h4{font-size:clamp(17px,1.35vw,22px);font-weight:500;letter-spacing:-.03em;margin-bottom:6px}
+.skill p{font-size:clamp(13px,1vw,16px);font-weight:300;line-height:1.5;color:var(--muted)}
+.skill .tags{margin-top:4px}
+.skill .tags span:first-child{background:#fff;border-color:rgba(0,0,0,.12);color:inherit}
+
+/* ---------- SHARED SLIDE CHROME ---------- */
+.slide{position:relative;background:var(--bg);color:var(--text);padding:36px var(--gut) clamp(60px,8vh,100px);overflow:hidden;border-top:1px solid var(--hair)}
+.slide::before,.slide::after{content:"";position:absolute;pointer-events:none;z-index:0;border-radius:50%}
+.slide::before{width:70vw;height:70vw;right:-40vw;top:-34vw;background:radial-gradient(closest-side,rgba(232,88,42,.16),rgba(232,88,42,.05) 60%,transparent)}
+.slide::after{width:55vw;height:40vw;left:-24vw;bottom:-24vw;background:radial-gradient(closest-side,rgba(232,88,42,.09),transparent)}
+.slide>*{position:relative;z-index:1}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;font-size:clamp(13px,1.1vw,18px);font-weight:400;letter-spacing:-.02em;color:var(--muted);margin-bottom:clamp(30px,5vh,60px)}
+.bar .mark{width:clamp(44px,4vw,68px);height:auto}
+.bar span:last-child{text-align:right}
+
+/* chapter divider */
+.chapter{background:var(--bg);padding:14px}
+.chapter-in{position:relative;border-radius:clamp(18px,2vw,30px);padding:36px var(--gut) clamp(70px,10vh,120px);
+  background:var(--ribs),var(--fire);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.chapter .bar{color:rgba(255,255,255,.8)}
+.chapter .bar .mark{color:#fff}
+.chapter-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:30px}
+.others{display:flex;flex-direction:column;gap:.25em;font-size:clamp(20px,2.6vw,44px);font-weight:300;letter-spacing:-.04em;color:rgba(255,255,255,.38)}
+.others b{font-weight:600}
+.others a:hover{color:#fff}
+.title{font-size:clamp(40px,6.4vw,116px);font-weight:300;letter-spacing:-.06em;white-space:nowrap;
+  background:linear-gradient(90deg,#fff 55%,rgba(255,255,255,.4));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.title b{font-weight:600}
+
+/* boards */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,40px)}
+.board{background:var(--panel);border:1px solid var(--hair);border-radius:clamp(18px,1.8vw,28px);padding:clamp(14px,1.8vw,30px)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(6px,.6vw,10px)}
+.grid.c4{grid-template-columns:repeat(4,1fr)}
+.grid.c2{grid-template-columns:repeat(2,1fr)}
+.grid img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--panel-2);border-radius:6px}
+.grid.sq img{aspect-ratio:1}
+.grid.wide img{aspect-ratio:16/10}
+.grid.free img{aspect-ratio:auto}
+.cap{text-align:center;color:var(--muted);font-size:clamp(15px,1.3vw,22px);font-weight:400;letter-spacing:-.02em;margin-top:clamp(18px,2.2vw,30px)}
+.gap{height:clamp(36px,5vw,80px)}
+.zoom{cursor:zoom-in;transition:transform .45s cubic-bezier(.2,.7,.2,1),filter .3s}
+.zoom:hover{transform:scale(1.015);filter:brightness(1.06)}
+
+/* project intro (left text / right visuals) */
+.intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(30px,5vw,90px);align-items:start}
+.intro h3{font-size:clamp(44px,5.6vw,100px);line-height:.95;letter-spacing:-.06em;font-weight:300;margin-bottom:clamp(24px,3vw,46px);padding-right:.05em;
+  background:linear-gradient(180deg,#111 40%,rgba(17,17,17,.5));-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro h3 b{font-weight:500;display:block}
+.intro p{font-size:clamp(15px,1.3vw,21px);line-height:1.5;font-weight:300;margin-bottom:1.1em;max-width:38ch;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.tags span{background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:999px;padding:.45em 1.1em;font-size:clamp(12px,.95vw,15px);font-weight:400}
+.tags span:first-child{background:var(--orange);border-color:var(--orange);color:#fff}
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.wall .tile{background:var(--panel);border:1px solid var(--hair);border-radius:20px;overflow:hidden}
+.wall .tile img{width:100%;height:100%;object-fit:cover}
+.wall .span2{grid-column:span 2}
+
+/* phones */
+.phones{display:flex;gap:clamp(10px,1.4vw,24px);overflow-x:auto;padding:10px 4px 26px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--orange) transparent}
+.phone{flex:0 0 clamp(150px,15vw,250px);aspect-ratio:1320/2868;border-radius:clamp(22px,2.4vw,40px);overflow:hidden;border:5px solid #1b1b1b;background:#111;box-shadow:0 30px 60px -30px rgba(0,0,0,.45);scroll-snap-align:start}
+.phone img{width:100%;height:100%;object-fit:cover}
+
+/* browser scroll previews */
+.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,32px)}
+.sites.c4{grid-template-columns:repeat(4,1fr)}
+.site figcaption{display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-size:clamp(14px,1.1vw,18px);letter-spacing:-.02em}
+.site figcaption b{font-weight:500}
+.site figcaption span{color:var(--muted)}
+.browser{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 18px 50px -30px rgba(0,0,0,.35);border:1px solid var(--hair);transition:border-color .3s,box-shadow .3s}
+.site:hover .browser{border-color:rgba(232,88,42,.6);box-shadow:0 20px 60px -30px rgba(232,88,42,.7)}
+.browser i{display:flex;gap:6px;padding:10px 12px;background:var(--panel-2);border-bottom:1px solid var(--hair)}
+.browser i::before,.browser i::after,.browser i b{content:"";width:9px;height:9px;border-radius:50%;background:rgba(0,0,0,.14)}
+.browser i::before{background:var(--orange)}
+.vp{height:clamp(300px,34vw,560px);overflow:hidden;cursor:zoom-in}
+.vp img{width:100%;transition:transform var(--d,6s) cubic-bezier(.45,0,.3,1)}
+.hint{display:block;text-align:center;color:var(--muted);font-size:14px;margin-top:22px}
+
+/* ---------- THANKS ---------- */
+.thanks{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:30px;margin:14px;border-radius:clamp(18px,2vw,30px);padding:clamp(70px,12vh,130px) var(--gut);
+  background:var(--ribs),var(--fire);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.thanks .mark{width:clamp(100px,11vw,190px);height:auto}
+.thanks h2{font-size:clamp(44px,5.4vw,100px);line-height:.92;font-weight:500;text-align:center;letter-spacing:-.06em;
+  background:linear-gradient(180deg,#fff 40%,rgba(255,255,255,.5));-webkit-background-clip:text;background-clip:text;color:transparent}
+.thanks .by{text-align:center;margin-top:40px;font-size:clamp(16px,1.4vw,24px);font-weight:300;letter-spacing:-.02em}
+.thanks .by b{font-weight:600}
+.thanks .by small{display:block;font-size:13px;opacity:.7}
+.thanks .cta{text-align:center;font-size:clamp(16px,1.35vw,22px);font-weight:300;line-height:1.4;letter-spacing:-.02em}
+.thanks .cta b{font-weight:500}
+.thanks .cta a{display:inline-flex;align-items:center;gap:14px;margin-top:20px;background:var(--orange);border-radius:999px;padding:6px 6px 6px 22px;font-weight:500;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);transition:transform .3s}
+.thanks .cta a::after{content:"→";display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#fff;color:var(--orange);font-size:20px}
+.thanks .cta a:hover{transform:translateY(-2px)}
+.thanks .cta a.cv-link{background:none;box-shadow:none;padding:0;margin-top:16px;font-size:.85em;text-decoration:underline;text-underline-offset:4px;opacity:.85}
+.thanks .cta a.cv-link::after{content:none}
+
+/* floating chapter nav */
+.dock{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:50;display:flex;gap:4px;padding:6px;border-radius:999px;
+  background:rgba(255,255,255,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px -12px rgba(0,0,0,.25);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.dock.on{transform:translate(-50%,0)}
+.dock a{color:var(--text);font-size:14px;font-weight:400;padding:9px 16px;border-radius:999px;white-space:nowrap;transition:background .25s}
+.dock a.act{background:var(--orange);color:#fff}
+.dock a:not(.act):hover{background:rgba(0,0,0,.06)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(250,250,249,.97);display:none;overflow:auto;padding:60px 16px;cursor:zoom-out}
+.lb.on{display:block}
+.lb img{margin:0 auto;max-width:min(1200px,100%);height:auto;border-radius:8px}
+.lb button{position:fixed;top:16px;right:20px;width:44px;height:44px;border-radius:50%;border:0;background:var(--orange);color:#fff;font-size:22px;cursor:pointer}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
-/* WORK */
-.project{
-  display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);
-  padding:54px 0;align-items:center;
+@media (hover:none){.vp{overflow-y:auto;cursor:auto}}
+@media (max-width:1024px){
+  .about{grid-template-columns:1fr 1.4fr}
+  .stack{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
+  .stack .chip{min-width:0}
+  .sites.c4{grid-template-columns:repeat(2,1fr)}
+  .chapter-grid{grid-template-columns:1fr;text-align:center}
+  .others{display:none}
 }
-.project:last-of-type{border-bottom:1px solid var(--line)}
-.project:nth-child(even) .p-media{order:2}
-.p-media{
-  aspect-ratio:4/3;background:var(--paper-deep);border:1px solid var(--line);
-  position:relative;overflow:hidden;cursor:zoom-in;
-  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+@media (max-width:760px){
+  .hero,.thanks{margin:8px}
+  .hero-photo{max-width:100%;opacity:.55!important;-webkit-mask-image:linear-gradient(0deg,transparent 30%,#000 75%);mask-image:linear-gradient(0deg,transparent 30%,#000 75%)}
+  .chapter{padding:8px}
+  .about,.intro,.pair,.thanks,.cv-grid{grid-template-columns:1fr}
+  .portrait{max-width:420px}
+  .sites,.sites.c4{grid-template-columns:1fr}
+  .grid.c4{grid-template-columns:repeat(2,1fr)}
+  .bar{grid-template-columns:1fr auto}
+  .bar span:first-child{display:none}
+  .chapter-in{padding-left:20px;padding-right:20px}
+  .title{white-space:normal}
+  .thanks{text-align:center;justify-items:center}
+  .dock a{padding:8px 11px;font-size:13px}
+  .links{grid-template-columns:1fr;gap:0}
+  .links dd{text-align:left;margin-bottom:8px}
 }
-.p-media img,.p-media video{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .6s}
-.project:hover .p-media{transform:translateY(-6px) rotate(-.4deg);box-shadow:0 22px 44px -18px rgba(26,24,21,.35)}
-.project:hover .p-media img,.project:hover .p-media video{transform:scale(1.03)}
-.p-media .zoom{
-  position:absolute;bottom:12px;right:12px;background:var(--ink);color:var(--paper);
-  font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
-  padding:7px 12px;opacity:0;transition:opacity .3s;
-}
-.project:hover .zoom{opacity:1}
-.p-body{padding:0 6%}
-.p-index{font-family:var(--mono);font-size:.75rem;color:var(--accent);letter-spacing:.1em}
-.p-title{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:500;letter-spacing:-.01em;margin:10px 0 14px}
-.p-desc{color:var(--ink-soft);max-width:46ch}
-.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
-.tag{
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
-  border:1px solid var(--line);padding:6px 12px;border-radius:100px;color:var(--ink-soft);
-  transition:background .25s,color .25s,border-color .25s;
-}
-.project:hover .tag{border-color:var(--accent);color:var(--ink)}
-.p-link{
-  display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:none;border:none;cursor:pointer;
-  font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:3px;
-  transition:color .2s,gap .2s;
-}
-.p-link:hover{color:var(--accent);gap:14px}
-.p-link span{display:inline-block;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.p-link:hover span{transform:translateX(4px)}
-
-/* MORE WORK GRID */
-.more-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
-.mini{position:relative;border:1px solid var(--line);background:var(--paper-deep);cursor:zoom-in;overflow:hidden;transition:transform .35s,box-shadow .35s}
-.mini:hover{transform:translateY(-5px);box-shadow:0 20px 38px -20px rgba(26,24,21,.32)}
-.mini img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:top;display:block;transition:transform .5s}
-.mini:hover img{transform:scale(1.05)}
-.mini figcaption{
-  font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
-  padding:13px 15px;border-top:1px solid var(--line);color:var(--ink-soft);background:var(--paper);
-}
-
-/* CASE STUDY STRIP */
-.cs-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:30px}
-.cs-strip figure{border:1px solid var(--line);cursor:zoom-in;overflow:hidden;transition:box-shadow .35s,transform .35s}
-.cs-strip figure:hover{transform:translateY(-4px);box-shadow:0 20px 38px -20px rgba(26,24,21,.32)}
-.cs-strip img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;transition:transform .4s}
-.cs-strip figure:hover img{transform:scale(1.04)}
-.cs-strip figcaption{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;color:var(--ink-soft);border-top:1px solid var(--line)}
-
-/* EXPERIENCE */
-#experience{background:var(--ink);color:var(--paper)}
-#experience .sec-title{color:var(--paper)}
-#experience .sec-line{background:rgba(246,241,231,.2)}
-.xp{
-  display:grid;grid-template-columns:190px 1fr auto;gap:30px;align-items:baseline;
-  padding:34px 0;border-top:1px solid rgba(246,241,231,.16);transition:padding-left .3s;
-}
-.xp:hover{padding-left:14px}
-.xp:last-child{border-bottom:1px solid rgba(246,241,231,.16)}
-.xp-date{font-family:var(--mono);font-size:.75rem;color:rgba(246,241,231,.55);letter-spacing:.06em}
-.xp-role{font-family:var(--serif);font-size:1.35rem;font-weight:400;letter-spacing:-.01em}
-.xp-org{color:rgba(246,241,231,.6);font-size:.95rem;margin-top:4px}
-.xp-desc{color:rgba(246,241,231,.5);font-size:.86rem;margin-top:8px;max-width:64ch}
-.xp-now{
-  font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--paper);background:var(--accent);padding:5px 12px;border-radius:100px;white-space:nowrap;
-}
-
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.skill-cell{background:var(--paper);padding:36px 30px;transition:background .3s,transform .3s cubic-bezier(.2,.7,.2,1);position:relative;z-index:1}
-.skill-cell:hover{background:var(--paper-deep);transform:translateY(-4px);box-shadow:0 18px 34px -20px rgba(26,24,21,.3)}
-.skill-cell h3{font-family:var(--serif);font-weight:500;font-size:1.15rem;margin-bottom:14px}
-.skill-cell h3::before{content:"◆ ";color:var(--accent);font-size:.7em;vertical-align:2px;display:inline-block;transition:transform .4s}
-.skill-cell:hover h3::before{transform:rotate(90deg)}
-.skill-cell p{color:var(--ink-soft);font-size:.92rem}
-
-/* CONTACT */
-#contact{padding:130px 0 60px}
-.contact-big{font-family:var(--serif);font-weight:300;letter-spacing:-.03em;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1.05;max-width:16ch}
-.contact-big em{
-  font-style:italic;
-  background:linear-gradient(100deg,var(--accent) 30%,#e8896a 50%,var(--accent) 70%);
-  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:shimmer 6s ease-in-out infinite;
-}
-.contact-row{display:flex;gap:44px;flex-wrap:wrap;margin-top:52px}
-.contact-row a{
-  font-family:var(--mono);font-size:.85rem;letter-spacing:.06em;color:var(--ink);
-  text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:4px;transition:color .2s;
-}
-.contact-row a:hover{color:var(--accent)}
-footer{
-  border-top:1px solid var(--line);margin-top:90px;padding:26px 0;display:flex;
-  justify-content:space-between;flex-wrap:wrap;gap:10px;
-  font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.06em;
-}
-
-/* MARQUEE */
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:16px 0;background:var(--paper-deep)}
-.marquee-inner{display:inline-block;animation:scroll 26s linear infinite}
-.marquee span{font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0 34px}
-.marquee b{color:var(--accent);font-weight:400}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* LIGHTBOX */
-.lightbox{
-  position:fixed;inset:0;background:rgba(26,24,21,.94);z-index:1000;display:none;
-  overflow-y:auto;padding:5vh 5vw;cursor:zoom-out;
-}
-.lightbox.open{display:block}
-.lightbox img{display:block;max-width:1400px;width:100%;margin:0 auto;border:1px solid rgba(246,241,231,.2)}
-.lightbox video{display:none;max-width:1400px;width:100%;margin:0 auto 26px;border:1px solid rgba(246,241,231,.2)}
-.lightbox-gallery{display:none;max-width:760px;margin:0 auto;flex-direction:column;gap:22px}
-.lightbox-gallery img{max-width:100%;width:100%;border:1px solid rgba(246,241,231,.2)}
-.lightbox .close{
-  position:fixed;top:22px;right:26px;font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;
-  color:var(--paper);background:var(--accent);border:none;padding:10px 18px;cursor:pointer;text-transform:uppercase;
-}
-
-@media(max-width:820px){
-  .nav-toggle{display:flex}
-  nav ul{
-    display:flex;flex-direction:column;position:fixed;inset:0;background:var(--paper);
-    justify-content:center;align-items:center;gap:34px;z-index:101;
-    opacity:0;pointer-events:none;transform:translateY(-12px);transition:opacity .35s,transform .35s;
-  }
-  nav ul.open{opacity:1;pointer-events:auto;transform:none}
-  nav ul a{font-size:1.05rem}
-  .project{grid-template-columns:1fr;gap:28px}
-  .project:nth-child(even) .p-media{order:0}
-  .p-body{padding:0}
-  .xp{grid-template-columns:1fr;gap:6px}
-  .xp-now{justify-self:start}
-}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.year,.big,.chips,.google,.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<div class="scroll-progress" id="scroll-progress"></div>
-<nav>
-  <a class="logo" href="#top">R<em>.</em>Shilpa — <em>Portfolio</em></a>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  <ul id="nav-menu">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#casestudy">Case Study</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<!-- reusable monogram -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mono" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="5"/>
+    <path d="M8 66 H112" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+    <text x="60" y="56" text-anchor="middle" font-family="Inter Tight,sans-serif" font-weight="800" font-size="40" letter-spacing="-1" fill="currentColor">RLS</text>
+    <text x="60" y="90" text-anchor="middle" font-family="Inter Tight,sans-serif" font-weight="500" font-size="13" letter-spacing="4" fill="currentColor">DESIGN</text>
+  </symbol>
+</svg>
 
-<header id="top" class="wrap">
-  <div class="kicker">Rishitha L. Shilpa · UI/UX Designer · Nottingham, UK</div>
-  <h1>
-    <span class="l">Designing interfaces</span>
-    <span class="l">people <em>actually enjoy.</em></span>
-  </h1>
-  <div class="hero-foot">
-    <p>UX/UI designer with 5+ years crafting user-centred digital experiences across e-commerce, SaaS platforms, mobile apps and travel — from research and wireframes to polished, developer-ready design.</p>
-    <div class="hero-meta">
-      <b>Currently</b> — UI/UX Designer @ Dr Paul<br>
-      <b>Open to</b> — Full-time · Remote · Hybrid<br>
-      <b>Eligible to work in the UK</b>
+<!-- HERO -->
+<header class="hero grain" id="top">
+  <svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Rishitha monogram"><use href="#mono"/></svg>
+  <img class="hero-photo" src="assets/img/me-hero.jpg" alt="Rishitha seated in a light suit">
+  <div class="hero-body">
+    <div class="year">2026</div>
+    <h1 class="big">Portfolio</h1>
+    <nav class="chips" aria-label="Chapters">
+      <a class="chip" href="#uiux">UI/UX Design</a>
+      <a class="chip" href="#web">Web Design</a>
+      <a class="chip" href="#social">Social Media</a>
+      <a class="chip" href="#branding">Branding</a>
+    </nav>
+    <div class="google">
+      <small>or just google me:</small>
+      <strong>RISHITHA L. SHILPA</strong>
+      <em>UI/UX Designer &amp; Developer · Graphic &amp; Digital Design · AI Creative</em>
     </div>
   </div>
-  <div class="scroll-cue">Scroll <span></span></div>
 </header>
 
-<div class="marquee">
-  <div class="marquee-inner">
-    <span>Figma <b>◆</b></span><span>User Research <b>◆</b></span><span>Prototyping <b>◆</b></span><span>Design Systems <b>◆</b></span><span>Shopify / Liquid <b>◆</b></span><span>Framer <b>◆</b></span><span>Adobe Creative Suite <b>◆</b></span><span>HTML / CSS / JS <b>◆</b></span><span>Google Analytics <b>◆</b></span><span>Accessibility-first <b>◆</b></span>
-    <span>Figma <b>◆</b></span><span>User Research <b>◆</b></span><span>Prototyping <b>◆</b></span><span>Design Systems <b>◆</b></span><span>Shopify / Liquid <b>◆</b></span><span>Framer <b>◆</b></span><span>Adobe Creative Suite <b>◆</b></span><span>HTML / CSS / JS <b>◆</b></span><span>Google Analytics <b>◆</b></span><span>Accessibility-first <b>◆</b></span>
+<!-- ABOUT -->
+<section class="about grain" id="about">
+  <div class="portrait reveal">
+    <img src="assets/img/me.jpg" alt="Portrait of Rishitha">
   </div>
-</div>
-
-<!-- ================= WORK ================= -->
-<section id="work" class="wrap">
-  <div class="sec-head reveal">
-    <span class="sec-num">01</span>
-    <h2 class="sec-title">Selected Work</h2>
-    <span class="sec-line"></span>
-  </div>
-
-  <article class="project reveal">
-    <div class="p-media" data-full="assets/AquaVision.jpg" data-video="assets/AquaVision_full.mp4">
-      <video src="assets/AquaVision.mp4" poster="assets/AquaVision.jpg" autoplay muted loop playsinline preload="metadata"></video>
-      <span class="zoom">View full design</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">WEB DESIGN — 01</div>
-      <h3 class="p-title">AquaVision — Swimwear E-commerce</h3>
-      <p class="p-desc">A crisp, aquatic e-commerce concept for a swim goggles brand — layered gradient product cards, motion-led storytelling and a clean checkout path designed to showcase new arrivals.</p>
-      <div class="tags"><span class="tag">Web Design</span><span class="tag">E-commerce</span><span class="tag">UI</span></div>
-      <button class="p-link" data-full="assets/AquaVision.jpg" data-video="assets/AquaVision_full.mp4">View full design <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-full="assets/drpaul_page_v2.jpg">
-      <img src="assets/drpaul_card_v2.jpg" alt="Dr Paul e-commerce website design" loading="lazy">
-      <span class="zoom">View full design</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">E-COMMERCE — 02</div>
-      <h3 class="p-title">Dr Paul — Hair Care Brand</h3>
-      <p class="p-desc">End-to-end UI/UX for a full e-commerce brand: 15+ responsive pages designed, tested and shipped on Shopify. UX research surfaced three major pain points; iterating on them drove a 25% lift in repeat purchases and 30% month-on-month organic traffic growth.</p>
-      <div class="tags"><span class="tag">Shopify</span><span class="tag">UX Research</span><span class="tag">Design System</span><span class="tag">Analytics</span></div>
-      <button class="p-link" data-full="assets/drpaul_page_v2.jpg">View full design <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-full="assets/readwave_page_v2.jpg">
-      <img src="assets/readwave_card_v2.jpg" alt="Read Wave blogging platform design" loading="lazy">
-      <span class="zoom">View full design</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">UX CASE STUDY — 03</div>
-      <h3 class="p-title">Read Wave — Blogging Platform</h3>
-      <p class="p-desc">A complete UX case study for a modern blogging platform — from user personas and journey mapping through wireframes to a full high-fidelity UI kit covering reading, writing and discovery flows. Full process shown below.</p>
-      <div class="tags"><span class="tag">Personas</span><span class="tag">User Flows</span><span class="tag">Wireframes</span><span class="tag">UI Kit</span></div>
-      <button class="p-link" data-full="assets/readwave_page_v2.jpg">View full design <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-full="assets/auris_page_v2.jpg">
-      <img src="assets/auris_card_v2.jpg" alt="AURIS headphones landing page design" loading="lazy">
-      <span class="zoom">View full design</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">PRODUCT LANDING — 04</div>
-      <h3 class="p-title">AURIS — Audio Product Landing</h3>
-      <p class="p-desc">A dark, cinematic landing page concept for a premium headphone brand — bold product photography, dramatic type and a conversion-focused narrative from hero to checkout.</p>
-      <div class="tags"><span class="tag">Landing Page</span><span class="tag">Art Direction</span><span class="tag">Figma</span></div>
-      <button class="p-link" data-full="assets/auris_page_v2.jpg">View full design <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-full="assets/sephora_page_v2.jpg">
-      <img src="assets/sephora_card_v2.jpg" alt="Sephora homepage concept redesign" loading="lazy">
-      <span class="zoom">View full design</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">CONCEPT REDESIGN — 05</div>
-      <h3 class="p-title">Sephora — Homepage Concept</h3>
-      <p class="p-desc">A concept redesign of the Sephora homepage — restructuring merchandising hierarchy, elevating product discovery and bringing a cleaner, editorial feel to a busy beauty e-commerce experience.</p>
-      <div class="tags"><span class="tag">E-commerce</span><span class="tag">Visual Design</span><span class="tag">UX</span></div>
-      <button class="p-link" data-full="assets/sephora_page_v2.jpg">View full design <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-full="assets/malabar_page_v2.jpg">
-      <img src="assets/malabar_card_v2.jpg" alt="Malabar restaurant concept website" loading="lazy">
-      <span class="zoom">View full design</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">HOSPITALITY — 06</div>
-      <h3 class="p-title">Malabar — Restaurant Concept</h3>
-      <p class="p-desc">A rich, atmospheric website concept for an Indian restaurant — moody photography, warm spice-inspired palette and an elegant menu and booking experience.</p>
-      <div class="tags"><span class="tag">Web Design</span><span class="tag">Branding</span><span class="tag">Concept</span></div>
-      <button class="p-link" data-full="assets/malabar_page_v2.jpg">View full design <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-full="assets/nexcon_page_v2.jpg">
-      <img src="assets/nexcon_card_v2.jpg" alt="Nexcon construction company website" loading="lazy">
-      <span class="zoom">View full design</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">CORPORATE — 07</div>
-      <h3 class="p-title">Nexcon — Construction &amp; Architecture</h3>
-      <p class="p-desc">A confident corporate site for a construction firm — strong grid, industrial dark theme with a sharp accent, and clear service and project storytelling built for trust.</p>
-      <div class="tags"><span class="tag">Corporate</span><span class="tag">Web Design</span><span class="tag">UI</span></div>
-      <button class="p-link" data-full="assets/nexcon_page_v2.jpg">View full design <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-full="assets/vitly_page_v2.jpg">
-      <img src="assets/vitly_card_v2.jpg" alt="Vitly supplements landing page" loading="lazy">
-      <span class="zoom">View full design</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">HEALTH &amp; WELLNESS — 08</div>
-      <h3 class="p-title">Vitly — Supplement Brand</h3>
-      <p class="p-desc">A bright, friendly landing page for a vitamin brand — playful colour, clean product presentation and benefit-led sections designed to convert health-conscious shoppers.</p>
-      <div class="tags"><span class="tag">Landing Page</span><span class="tag">E-commerce</span><span class="tag">UI</span></div>
-      <button class="p-link" data-full="assets/vitly_page_v2.jpg">View full design <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-gallery="assets/social_1_v2.jpg,assets/social_2_v2.jpg,assets/social_3_v2.jpg,assets/social_4_v2.jpg,assets/social_5_v2.jpg,assets/social_6_v2.jpg,assets/social_7_v2.jpg,assets/social_8_v2.jpg,assets/social_9_v2.jpg,assets/social_10_v2.jpg">
-      <img src="assets/social_card_v2.jpg" alt="Dr Paul social media content design" loading="lazy">
-      <span class="zoom">View gallery</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">SOCIAL MEDIA — 09</div>
-      <h3 class="p-title">Dr Paul — Social Media Content</h3>
-      <p class="p-desc">Ongoing organic content design for the Dr Paul brand — product features, pet-health tips, engagement posts and giveaways, all built to a consistent visual system across Instagram and Facebook.</p>
-      <div class="tags"><span class="tag">Social Media</span><span class="tag">Content Design</span><span class="tag">Branding</span></div>
-      <button class="p-link" data-gallery="assets/social_1_v2.jpg,assets/social_2_v2.jpg,assets/social_3_v2.jpg,assets/social_4_v2.jpg,assets/social_5_v2.jpg,assets/social_6_v2.jpg,assets/social_7_v2.jpg,assets/social_8_v2.jpg,assets/social_9_v2.jpg,assets/social_10_v2.jpg">View gallery <span>→</span></button>
-    </div>
-  </article>
-
-  <article class="project reveal">
-    <div class="p-media" data-gallery="assets/logo_1_v2.jpg,assets/logo_2_v2.jpg,assets/logo_3_v2.jpg,assets/logo_4_v2.jpg,assets/logo_5_v2.jpg,assets/logo_6_v2.jpg,assets/logo_7_v2.jpg">
-      <img src="assets/logo_card_v2.jpg" alt="Logo and brand identity design" loading="lazy">
-      <span class="zoom">View gallery</span>
-    </div>
-    <div class="p-body">
-      <div class="p-index">BRAND IDENTITY — 10</div>
-      <h3 class="p-title">Logo &amp; Brand Identity</h3>
-      <p class="p-desc">A selection of logo and mark explorations across four brands — from a playful nut-brand splash mark to a refined tree-and-profile identity for a wellness label — each pushed through multiple concepts and colourways before landing on a final direction.</p>
-      <div class="tags"><span class="tag">Logo Design</span><span class="tag">Brand Identity</span><span class="tag">Illustrator</span></div>
-      <button class="p-link" data-gallery="assets/logo_1_v2.jpg,assets/logo_2_v2.jpg,assets/logo_3_v2.jpg,assets/logo_4_v2.jpg,assets/logo_5_v2.jpg,assets/logo_6_v2.jpg,assets/logo_7_v2.jpg">View gallery <span>→</span></button>
-    </div>
-  </article>
-</section>
-
-<!-- ================= CASE STUDY STRIP ================= -->
-<section id="casestudy" class="wrap" style="padding-top:0">
-  <div class="sec-head reveal">
-    <span class="sec-num">02</span>
-    <h2 class="sec-title">Inside the Process — Read Wave</h2>
-    <span class="sec-line"></span>
-  </div>
-  <p class="reveal" style="color:var(--ink-soft);max-width:62ch;margin-top:-30px">How I work, shown end-to-end: research, personas, user flows and wireframes before a single pixel of UI. Tap any stage to view it in full.</p>
-  <div class="cs-strip reveal">
-    <figure data-full="assets/rw_cover_v2.jpg"><img src="assets/rw_cover_v2.jpg" alt="Read Wave case study cover"><figcaption>01 — Brief &amp; Cover</figcaption></figure>
-    <figure data-full="assets/rw_persona_v2.jpg"><img src="assets/rw_persona_v2.jpg" alt="User persona"><figcaption>02 — User Personas</figcaption></figure>
-    <figure data-full="assets/rw_flow_v2.jpg"><img src="assets/rw_flow_v2.jpg" alt="User flow diagram"><figcaption>03 — User Flows</figcaption></figure>
-    <figure data-full="assets/rw_wire_v2.jpg"><img src="assets/rw_wire_v2.jpg" alt="Wireframes"><figcaption>04 — Wireframes</figcaption></figure>
-  </div>
-</section>
-
-<!-- ================= MORE WORK ================= -->
-<section class="wrap" style="padding-top:0">
-  <div class="sec-head reveal">
-    <span class="sec-num">03</span>
-    <h2 class="sec-title">More Work</h2>
-    <span class="sec-line"></span>
-  </div>
-  <div class="more-grid reveal">
-    <figure class="mini" data-full="assets/prodrive_page_v2.jpg"><img src="assets/prodrive_card_v2.jpg" alt="ProDrive driving school website" loading="lazy"><figcaption>ProDrive — Driving School</figcaption></figure>
-    <figure class="mini" data-full="assets/pillarbox_page_v2.jpg"><img src="assets/pillarbox_card_v2.jpg" alt="Pillar Box restaurant website" loading="lazy"><figcaption>Pillar Box — Hospitality</figcaption></figure>
-    <figure class="mini" data-full="assets/horen_page_v2.jpg"><img src="assets/horen_card_v2.jpg" alt="Horen Foods website" loading="lazy"><figcaption>Horen Foods — Food Brand</figcaption></figure>
-    <figure class="mini" data-full="assets/aspley_page_v2.jpg"><img src="assets/aspley_card_v2.jpg" alt="Aspley Fish Bar website" loading="lazy"><figcaption>Aspley Fish Bar — Local Business</figcaption></figure>
-  </div>
-</section>
-
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">04</span>
-      <h2 class="sec-title">Experience</h2>
-      <span class="sec-line"></span>
-    </div>
-
-    <div class="xp reveal">
-      <div class="xp-date">SEP 2024 — PRESENT</div>
-      <div>
-        <div class="xp-role">UI/UX Designer</div>
-        <div class="xp-org">Dr Paul · London, UK</div>
-        <div class="xp-desc">Own 100% of design for an e-commerce brand — 15+ pages shipped, 25% lift in repeat purchases, 30% MoM organic traffic growth. Work embedded in the marketing team producing social media content, brochures, packaging and print assets alongside the core UI/UX work.</div>
-      </div>
-      <span class="xp-now">Current</span>
-    </div>
-    <div class="xp reveal">
-      <div class="xp-date">SEP 2023 — PRESENT</div>
-      <div>
-        <div class="xp-role">Freelance UI/UX Designer</div>
-        <div class="xp-org">Independent · Nottingham, UK</div>
-        <div class="xp-desc">15+ projects delivered end-to-end; 5+ interactive Framer sites; 20%+ engagement growth for multiple clients.</div>
-      </div>
-      <span class="xp-now">Current</span>
-    </div>
-    <div class="xp reveal">
-      <div class="xp-date">SEP 2021 — AUG 2023</div>
-      <div>
-        <div class="xp-role">UI/UX Engineer</div>
-        <div class="xp-org">Elegant Media · Remote (AU, LK, NZ, US clients)</div>
-        <div class="xp-desc">Led 20+ live client projects across mobile, SaaS, e-commerce and enterprise; 60+ projects total across 4 countries.</div>
-      </div>
-      <span></span>
-    </div>
-    <div class="xp reveal">
-      <div class="xp-date">FEB 2020 — MAY 2020</div>
-      <div>
-        <div class="xp-role">PHP Developer Intern</div>
-        <div class="xp-org">Apple Holidays Destination Services · Sri Lanka</div>
-        <div class="xp-desc">Laravel backend and front-end components on a live international travel booking platform.</div>
-      </div>
-      <span></span>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SKILLS ================= -->
-<section id="skills" class="wrap">
-  <div class="sec-head reveal">
-    <span class="sec-num">05</span>
-    <h2 class="sec-title">What I Do</h2>
-    <span class="sec-line"></span>
-  </div>
-  <div class="skills-grid reveal">
-    <div class="skill-cell">
-      <h3>UX Design</h3>
-      <p>User research, usability testing, journey mapping, information architecture and accessibility-first thinking — grounded in design thinking and double diamond.</p>
-    </div>
-    <div class="skill-cell">
-      <h3>UI &amp; Visual Design</h3>
-      <p>High-fidelity interfaces and design systems in Figma (components, variants, auto layout), plus Adobe XD, Photoshop, Illustrator and InDesign.</p>
-    </div>
-    <div class="skill-cell">
-      <h3>Prototyping</h3>
-      <p>Low- and high-fidelity prototypes with detailed interactions and transitions — including 5+ production-grade interactive sites built in Framer.</p>
-    </div>
-    <div class="skill-cell">
-      <h3>E-commerce &amp; Shopify</h3>
-      <p>Conversion-focused store design with hands-on Shopify Liquid theme customisation, third-party app integration and Shopify Analytics.</p>
-    </div>
-    <div class="skill-cell">
-      <h3>Front-end Aware</h3>
-      <p>HTML5, CSS3, JavaScript and Bootstrap foundations — designs that hand over cleanly to developers, with Git/GitHub and Agile workflow experience.</p>
-    </div>
-    <div class="skill-cell">
-      <h3>Data &amp; AI-Driven</h3>
-      <p>Google Analytics, Meta Ads Manager and Shopify Analytics to inform design decisions; AI tools (Claude, Midjourney, ChatGPT) for rapid ideation.</p>
-    </div>
-    <div class="skill-cell">
-      <h3>Graphic Design &amp; Print</h3>
-      <p>Social media content, brochures, packaging and marketing assets designed within a marketing team — brand-consistent collateral across digital and print.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="wrap">
   <div class="reveal">
-    <div class="kicker" style="opacity:1;animation:none">Let's work together</div>
-    <h2 class="contact-big">Have a project or a role in mind? <em>Say hello.</em></h2>
-    <div class="contact-row">
-      <a href="mailto:rishitha.lak@gmail.com">rishitha.lak@gmail.com</a>
-      <a href="tel:+447404979513">+44 7404 979513</a>
-      <a href="https://rishithadesign.framer.website/" target="_blank" rel="noopener">Framer Portfolio ↗</a>
-    </div>
+    <h2>About me</h2>
+    <p>I'm a multidisciplinary designer and developer with over five years of experience across UI/UX, graphic and brand design, digital marketing, front-end development and AI-driven creative.</p>
+    <h2>What I do</h2>
+    <p>I design user-centred products in Figma, from research and user flows to prototypes and polished, accessible UI. I create brand identities, packaging, social and campaign work in Adobe Creative Suite, then build it: responsive websites in HTML, CSS, JavaScript and React, and web and mobile apps through AI-assisted development.</p>
+    <div class="state">Creative craft with a commercial, data-informed mindset, <b>and work that delivers measurable results.</b></div>
+    <dl class="links">
+      <dt>Email:</dt><dd><a href="mailto:rishitha.lak@gmail.com">rishitha.lak@gmail.com</a></dd>
+      <dt>Instagram:</dt><dd>@rishitha.design</dd>
+      <dt>Based in:</dt><dd>Nottingham, UK · open to relocating</dd>
+      <dt>CV:</dt><dd><a href="assets/cv/Rishitha_L_Shilpa_CV.pdf" download>Download PDF</a></dd>
+    </dl>
   </div>
-  <footer>
-    <span>© 2026 Rishitha L. Shilpa — UI/UX Designer</span>
-    <span>Nottingham, England · Open to remote &amp; hybrid</span>
-  </footer>
+  <div class="stack reveal">
+    <a class="chip" href="#uiux">UI/UX Design</a>
+    <a class="chip" href="#web">Web Design</a>
+    <a class="chip" href="#social">Social Media</a>
+    <a class="chip" href="#branding">Branding</a>
+  </div>
 </section>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="close">Close ✕</button>
-  <video id="lightbox-video" muted loop playsinline></video>
-  <img src="" alt="Full design view" id="lightbox-img">
-  <div class="lightbox-gallery" id="lightbox-gallery"></div>
-</div>
+<!-- EXPERIENCE (from CV/Rishitha_CV_Master.docx) -->
+<section class="slide" id="cv">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="intro reveal">
+    <div>
+      <h3><b>Experience</b>&amp; Skills</h3>
+      <p>Freelance, in-house and agency work for clients in the UK, Australia, New Zealand, the US and Sri Lanka, across retail, food, fashion, hospitality and automotive.</p>
+      <a class="btn" href="assets/cv/Rishitha_L_Shilpa_CV.pdf" download>Download CV</a>
+    </div>
+    <div class="stats">
+      <div class="stat hot"><b>5+</b><span>Years across UI/UX, brand, marketing and front-end</span></div>
+      <div class="stat"><b>20+</b><span>Live web and app projects for international clients</span></div>
+      <div class="stat"><b>+25%</b><span>Repeat purchases after the Dr Paul e-commerce redesign</span></div>
+      <div class="stat"><b>+30%</b><span>Month-on-month organic traffic growth, Dr Paul</span></div>
+    </div>
+  </div>
+  <div class="gap"></div>
+  <div class="cv-grid reveal">
+    <div>
+      <p class="label">Experience</p>
+      <ol class="jobs">
+        <li>
+          <time>2023 – Present · Nottingham</time>
+          <h4>Freelance Designer &amp; Developer</h4>
+          <p>End-to-end design and build for retail, food, fashion, hospitality and automotive clients: UI/UX, brand identity, packaging, social and campaign assets, through to responsive websites and apps. Ships web and mobile apps with AI-assisted development, and produces AI-generated images, video and animation.</p>
+        </li>
+        <li>
+          <time>2024 – 2025 · London</time>
+          <h4>UX/UI &amp; Digital Designer</h4>
+          <span class="org">Dr Paul, pet wellness e-commerce</span>
+          <p>Owned the end-to-end redesign of the e-commerce site, from research and user journeys to responsive, accessible UI. <b>Drove a 25% lift in repeat purchases and 30% month-on-month organic traffic growth.</b> Directed product photography and designed social, email and campaign content.</p>
+        </li>
+        <li>
+          <time>2021 – 2023 · Remote</time>
+          <h4>UI/UX Engineer</h4>
+          <span class="org">Elegant Media</span>
+          <p>Designed websites and mobile apps across 20+ live projects for clients in Australia, New Zealand, the US and Sri Lanka. Wireframes, prototypes and high-fidelity UI in Figma, design systems and reusable components, working closely with developers and PMs.</p>
+        </li>
+        <li>
+          <time>2020 · Sri Lanka</time>
+          <h4>PHP Developer Intern</h4>
+          <span class="org">Apple Holidays Destination Services</span>
+          <p>Supported development of a travel booking platform in PHP and MySQL.</p>
+        </li>
+      </ol>
+    </div>
+    <div class="skills">
+      <p class="label">Skills</p>
+      <div class="skill"><h4>UI/UX Design</h4><p>Research, personas, journey maps, user flows, IA, wireframes, prototypes, usability testing, design systems, accessibility (WCAG).</p></div>
+      <div class="skill"><h4>Graphic &amp; Brand</h4><p>Identity and logo design, brand guidelines, packaging, social content, print and presentations.</p></div>
+      <div class="skill"><h4>Digital Marketing</h4><p>Social campaigns, email and newsletters, landing pages and banners, analytics-led optimisation.</p></div>
+      <div class="skill"><h4>Development</h4><p>HTML5, CSS3, JavaScript, React, WordPress, Shopify, and AI-assisted (vibe-coded) web and mobile apps.</p></div>
+      <div class="skill"><h4>Tools</h4><div class="tags"><span>Figma</span><span>Sketch</span><span>Illustrator</span><span>Photoshop</span><span>InDesign</span><span>Canva</span><span>Midjourney</span><span>Higgsfield</span><span>Runway</span><span>Claude</span><span>ChatGPT</span><span>Cursor</span></div></div>
+      <div class="skill"><h4>Education</h4><p>BSc Information Technology, SLIIT (Information Systems Engineering)<br>Foundations of UX Design, Google<br>HTML, CSS &amp; JavaScript for Web Developers, Coursera</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 UI/UX ============ -->
+<section class="chapter" id="uiux">
+  <div class="chapter-in grain">
+    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+    <div class="chapter-grid">
+      <div class="others"><a href="#web"><b>02.</b> Web Design</a><a href="#social"><b>03.</b> Social Media</a><a href="#branding"><b>04.</b> Branding</a></div>
+      <h2 class="title"><b>01.</b> UI/UX</h2>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="intro reveal">
+    <div>
+      <h3><b>Lovcation</b>Mobile App</h3>
+      <p>A location discovery app that helps people find attractions, hidden gems and activities around them, based on their mood and interests.</p>
+      <p>The full concept covers the problem, solution, colour, typography, logo and every core screen, from splash and sign-in to map directions and favourites.</p>
+      <div class="tags"><span>Mobile App</span><span>Case Study</span><span>Figma</span></div>
+    </div>
+    <div class="wall">
+      <div class="tile span2"><img class="zoom" src="assets/img/mobile/lov-cover.jpg" alt="Lovcation cover" loading="lazy"></div>
+      <div class="tile"><img class="zoom" src="assets/img/mobile/lov-6.jpg" alt="Lovcation logo" loading="lazy"></div>
+      <div class="tile"><img class="zoom" src="assets/img/mobile/lov-5.jpg" alt="Lovcation colour and type" loading="lazy"></div>
+    </div>
+  </div>
+  <div class="gap"></div>
+  <div class="phones reveal">
+    <div class="phone"><img class="zoom" src="assets/img/mobile/lov-s-0.jpg" alt="Splash" loading="lazy"></div>
+    <div class="phone"><img class="zoom" src="assets/img/mobile/lov-s-1.jpg" alt="Sign in" loading="lazy"></div>
+    <div class="phone"><img class="zoom" src="assets/img/mobile/lov-s-7.jpg" alt="Sign up" loading="lazy"></div>
+    <div class="phone"><img class="zoom" src="assets/img/mobile/lov-s-2.jpg" alt="Home" loading="lazy"></div>
+    <div class="phone"><img class="zoom" src="assets/img/mobile/lov-s-3.jpg" alt="Detail" loading="lazy"></div>
+    <div class="phone"><img class="zoom" src="assets/img/mobile/lov-s-4.jpg" alt="Directions" loading="lazy"></div>
+    <div class="phone"><img class="zoom" src="assets/img/mobile/lov-s-5.jpg" alt="Favourites" loading="lazy"></div>
+    <div class="phone"><img class="zoom" src="assets/img/mobile/lov-s-6.jpg" alt="Profile" loading="lazy"></div>
+  </div>
+  <div class="gap"></div>
+  <div class="board reveal">
+    <div class="grid wide">
+      <img class="zoom" src="assets/img/mobile/lov-1.jpg" alt="About and problem" loading="lazy">
+      <img class="zoom" src="assets/img/mobile/lov-3.jpg" alt="Solution" loading="lazy">
+      <img class="zoom" src="assets/img/mobile/lov-2.jpg" alt="Tagline" loading="lazy">
+      <img class="zoom" src="assets/img/mobile/lov-8.jpg" alt="Home screen" loading="lazy">
+      <img class="zoom" src="assets/img/mobile/lov-9.jpg" alt="Explore screen" loading="lazy">
+      <img class="zoom" src="assets/img/mobile/lov-10.jpg" alt="Detail screen" loading="lazy">
+    </div>
+  </div>
+  <p class="cap">Lovcation — Problem, Solution &amp; App Screens</p>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="pair reveal">
+    <div>
+      <div class="board"><div class="grid">
+        <img class="zoom" src="assets/img/mobile/luno-1.jpg" alt="Luno welcome" style="aspect-ratio:1320/2868" loading="lazy">
+        <img class="zoom" src="assets/img/mobile/luno-2.jpg" alt="Luno home" style="aspect-ratio:1320/2868" loading="lazy">
+        <img class="zoom" src="assets/img/mobile/luno-3.jpg" alt="Luno detail" style="aspect-ratio:1320/2868" loading="lazy">
+      </div></div>
+      <p class="cap">Luno — Car Showcase App</p>
+    </div>
+    <div>
+      <div class="board"><div class="grid c2">
+        <img class="zoom" src="assets/img/social/me-savoy.jpg" alt="Savoy Cinema mockup" loading="lazy">
+        <img class="zoom" src="assets/img/social/me-savoy2.jpg" alt="Savoy Cinema screens" loading="lazy">
+      </div></div>
+      <p class="cap">Savoy Cinema — Movie Booking App</p>
+    </div>
+  </div>
+  <div class="gap"></div>
+  <div class="board reveal"><div class="grid">
+    <img class="zoom" src="assets/img/mobile/dash-1.jpg" alt="Dashboard overview" loading="lazy">
+    <img class="zoom" src="assets/img/mobile/dash-2.jpg" alt="Dashboard activity" loading="lazy">
+    <img class="zoom" src="assets/img/mobile/dash-3.jpg" alt="Dashboard tracking" loading="lazy">
+  </div></div>
+  <p class="cap">Logistics Dashboard — Shipments, Live Tracking &amp; Orders</p>
+</section>
+
+<!-- ============ 02 WEB ============ -->
+<section class="chapter" id="web">
+  <div class="chapter-in grain">
+    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+    <div class="chapter-grid">
+      <div class="others"><a href="#uiux"><b>01.</b> UI/UX</a><a href="#social"><b>03.</b> Social Media</a><a href="#branding"><b>04.</b> Branding</a></div>
+      <h2 class="title"><b>02.</b> Web Design</h2>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="intro reveal">
+    <div>
+      <h3><b>Read Wave</b>Case Study</h3>
+      <p>A blogging platform designed end to end: project overview, user personas, user flow and wireframes, through to a full high-fidelity UI for reading, writing and discovery.</p>
+      <div class="tags"><span>UX Research</span><span>Personas</span><span>Wireframes</span><span>UI</span></div>
+    </div>
+    <div class="wall">
+      <div class="tile span2"><img class="zoom" src="assets/img/web/rw-cover-page.jpg" alt="Read Wave cover" loading="lazy"></div>
+      <div class="tile"><img class="zoom" src="assets/img/web/rw-project-overview.jpg" alt="Project overview" loading="lazy"></div>
+      <div class="tile"><img class="zoom" src="assets/img/web/rw-design-process.jpg" alt="Design process" loading="lazy"></div>
+    </div>
+  </div>
+  <div class="gap"></div>
+  <div class="board reveal"><div class="grid wide">
+    <img class="zoom" src="assets/img/web/rw-user-persona-1.jpg" alt="User persona" loading="lazy">
+    <img class="zoom" src="assets/img/web/rw-user-personas-2.jpg" alt="User persona 2" loading="lazy">
+    <img class="zoom" src="assets/img/web/rw-user-flow.jpg" alt="User flow" loading="lazy">
+    <img class="zoom" src="assets/img/web/rw-colour.jpg" alt="Colour palette" loading="lazy">
+    <img class="zoom" src="assets/img/web/rw-typo.jpg" alt="Typography" loading="lazy">
+    <img class="zoom" src="assets/img/web/rw-ui-login.jpg" alt="Login screen" loading="lazy">
+  </div></div>
+  <p class="cap">Personas, User Flow &amp; Visual System</p>
+  <div class="gap"></div>
+  <div class="sites c4 reveal">
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/rw-wire-1.jpg" alt="Wireframe home" loading="lazy"></div></div><figcaption><b>Wireframe</b><span>Home</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/rw-ui-home.jpg" alt="Read Wave home UI" loading="lazy"></div></div><figcaption><b>UI</b><span>Home</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/rw-ui-explore.jpg" alt="Read Wave explore UI" loading="lazy"></div></div><figcaption><b>UI</b><span>Explore</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/rw-ui-blog-view.jpg" alt="Read Wave blog view UI" loading="lazy"></div></div><figcaption><b>UI</b><span>Blog View</span></figcaption></figure>
+  </div>
+  <span class="hint">Hover a screen to scroll the full page · click to open</span>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="pair reveal">
+    <div>
+      <div class="board"><div class="grid c2 wide">
+        <img class="zoom" src="assets/img/web/malabar-1.jpg" alt="Malabar Hill hero" loading="lazy">
+        <img class="zoom" src="assets/img/web/malabar-2.jpg" alt="Malabar Hill story" loading="lazy">
+        <img class="zoom" src="assets/img/web/malabar-3.jpg" alt="Malabar Hill villas" loading="lazy">
+        <img class="zoom" src="assets/img/web/malabar-5.jpg" alt="Malabar Hill dining" loading="lazy">
+      </div></div>
+      <p class="cap">Malabar Hill — Resort Concept</p>
+    </div>
+    <div>
+      <div class="board"><div class="grid c2 wide">
+        <img class="zoom" src="assets/img/web/vitly-1.jpg" alt="Vitly hero" loading="lazy">
+        <img class="zoom" src="assets/img/web/vitly-2.jpg" alt="Vitly bestsellers" loading="lazy">
+        <img class="zoom" src="assets/img/web/vitly-3.jpg" alt="Vitly features" loading="lazy">
+        <img class="zoom" src="assets/img/web/vitly-4.jpg" alt="Vitly footer" loading="lazy">
+      </div></div>
+      <p class="cap">Vitly — Nutrition E-commerce</p>
+    </div>
+  </div>
+  <div class="gap"></div>
+  <div class="sites reveal">
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/sephora.jpg" alt="Sephora homepage concept" loading="lazy"></div></div><figcaption><b>Sephora</b><span>Homepage Redesign</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/auris.jpg" alt="AURIS website" loading="lazy"></div></div><figcaption><b>AURIS</b><span>Fashion E-commerce</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/aquavision.jpg" alt="AquaVision website" loading="lazy"></div></div><figcaption><b>AquaVision</b><span>Swimwear E-commerce</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="sites c4 reveal">
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/aspley.jpg" alt="Aspley Fish Bar website" loading="lazy"></div></div><figcaption><b>Aspley Fish Bar</b><span>Restaurant</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/pillarbox.jpg" alt="Pillar Box website" loading="lazy"></div></div><figcaption><b>Pillar Box</b><span>Hospitality</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/horen.jpg" alt="Horen Foods website" loading="lazy"></div></div><figcaption><b>Horen Foods</b><span>Food Brand</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/prodrive.jpg" alt="ProDrive website" loading="lazy"></div></div><figcaption><b>ProDrive</b><span>Automotive</span></figcaption></figure>
+  </div>
+  <div class="gap"></div>
+  <div class="sites reveal">
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/nexcon.jpg" alt="Nexcon website" loading="lazy"></div></div><figcaption><b>Nexcon</b><span>Construction</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/malabar-full.jpg" alt="Malabar Hill full page" loading="lazy"></div></div><figcaption><b>Malabar Hill</b><span>Full Page</span></figcaption></figure>
+    <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/vitly-full.jpg" alt="Vitly full page" loading="lazy"></div></div><figcaption><b>Vitly</b><span>Full Page</span></figcaption></figure>
+  </div>
+  <span class="hint">Hover a screen to scroll the full page · click to open</span>
+</section>
+
+<!-- ============ 03 SOCIAL ============ -->
+<section class="chapter" id="social">
+  <div class="chapter-in grain">
+    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+    <div class="chapter-grid">
+      <div class="others"><a href="#uiux"><b>01.</b> UI/UX</a><a href="#web"><b>02.</b> Web Design</a><a href="#branding"><b>04.</b> Branding</a></div>
+      <h2 class="title"><b>03.</b> Social Media</h2>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="intro reveal">
+    <div>
+      <h3><b>Dr Paul</b>Pet Wellness</h3>
+      <p>As UX/UI &amp; Digital Designer (2024–2025) I owned the brand's e-commerce redesign and kept every channel consistent: product and lifestyle photography, social, email and campaign content.</p>
+      <div class="tags"><span>E-commerce UX</span><span>Social</span><span>Email</span><span>Art Direction</span></div>
+    </div>
+    <div class="stats">
+      <div class="stat hot"><b>+25%</b><span>Lift in repeat purchases</span></div>
+      <div class="stat"><b>+30%</b><span>Month-on-month organic traffic growth</span></div>
+    </div>
+  </div>
+  <div class="gap"></div>
+  <div class="pair reveal">
+    <div>
+      <div class="board"><div class="grid sq">
+        <img class="zoom" src="assets/img/social/drpaul-2.jpg" alt="Dr Paul health tip post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-3.jpg" alt="Dr Paul brushing post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-1.jpg" alt="Dr Paul giveaway post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-8.jpg" alt="Dr Paul calming chews post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-9.jpg" alt="Dr Paul hip and joint post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-10.jpg" alt="Dr Paul flea post" loading="lazy">
+      </div></div>
+      <p class="cap">Dr. Paul — Product &amp; Engagement</p>
+    </div>
+    <div>
+      <div class="board"><div class="grid sq">
+        <img class="zoom" src="assets/img/social/drpaul-5.jpg" alt="Dr Paul oral health post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-6.jpg" alt="Dr Paul plaque post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-4.jpg" alt="Dr Paul pet tips post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-7.jpg" alt="Dr Paul products post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-day7.jpg" alt="Dr Paul flea and tick chews post" loading="lazy">
+        <img class="zoom" src="assets/img/social/drpaul-story.jpg" alt="Dr Paul salmon oil post" loading="lazy">
+      </div></div>
+      <p class="cap">Dr. Paul — Pet Health Education</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="pair reveal">
+    <div>
+      <div class="board"><div class="grid">
+        <img class="zoom" src="assets/img/social/me-problem.jpg" alt="Problem framing post" loading="lazy">
+        <img class="zoom" src="assets/img/social/me-friction.jpg" alt="Friction as exclusivity post" loading="lazy">
+        <img class="zoom" src="assets/img/social/me-closer.jpg" alt="Closer post" loading="lazy">
+        <img class="zoom" src="assets/img/social/me-sephora.jpg" alt="Sephora rebrand concept post" loading="lazy">
+        <img class="zoom" src="assets/img/social/me-clients.jpg" alt="UX psychology post" loading="lazy">
+        <img class="zoom" src="assets/img/social/me-malabar.jpg" alt="Malabar Hill concept post" loading="lazy">
+      </div></div>
+      <p class="cap">@rishitha.design — Personal Brand Content</p>
+    </div>
+    <div>
+      <div class="board"><div class="grid c2">
+        <img class="zoom" src="assets/img/social/lov-insta-1.jpg" alt="Lovcation Instagram post 1" loading="lazy">
+        <img class="zoom" src="assets/img/social/lov-insta-2.jpg" alt="Lovcation Instagram post 2" loading="lazy">
+        <img class="zoom" src="assets/img/social/lov-insta-3.jpg" alt="Lovcation Instagram post 3" loading="lazy">
+        <img class="zoom" src="assets/img/social/lov-insta-4.jpg" alt="Lovcation Instagram post 4" loading="lazy">
+      </div></div>
+      <p class="cap">Lovcation — Launch Campaign</p>
+    </div>
+  </div>
+  <div class="gap"></div>
+  <div class="board reveal"><div class="grid" style="grid-template-columns:repeat(3,1fr)">
+    <img class="zoom" src="assets/img/social/lov-linked-1.jpg" alt="Lovcation LinkedIn post 1" style="aspect-ratio:4/3" loading="lazy">
+    <img class="zoom" src="assets/img/social/lov-linked-2.jpg" alt="Lovcation LinkedIn post 2" style="aspect-ratio:4/3" loading="lazy">
+    <img class="zoom" src="assets/img/social/lov-linked-3.jpg" alt="Lovcation LinkedIn post 3" style="aspect-ratio:4/3" loading="lazy">
+  </div></div>
+  <p class="cap">LinkedIn Carousel &amp; UI Showcase Posts</p>
+</section>
+
+<!-- ============ 04 BRANDING ============ -->
+<section class="chapter" id="branding">
+  <div class="chapter-in grain">
+    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+    <div class="chapter-grid">
+      <div class="others"><a href="#uiux"><b>01.</b> UI/UX</a><a href="#web"><b>02.</b> Web Design</a><a href="#social"><b>03.</b> Social Media</a></div>
+      <h2 class="title"><b>04.</b> Branding</h2>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="intro reveal">
+    <div>
+      <h3><b>Petivu</b>Logo</h3>
+      <p>A playful identity for a pet brand. The dog's silhouette sits on top of the wordmark and its body forms the letters, so the name and the animal read as one shape.</p>
+      <p>Deep purple with a warm gold accent keeps it friendly but premium, and the mark works as an app icon too.</p>
+      <div class="tags"><span>Logo</span><span>Wordmark</span><span>App Icon</span></div>
+    </div>
+    <div class="board"><div class="grid c2 free">
+      <img class="zoom" src="assets/img/logo/petivu-1.jpg" alt="Petivu logo" style="grid-column:span 2;border-radius:14px" loading="lazy">
+      <img class="zoom" src="assets/img/logo/petivu-2.jpg" alt="Petivu logo variant" style="grid-column:span 2;border-radius:14px" loading="lazy">
+    </div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="intro reveal">
+    <div>
+      <h3><b>Silver Leaf</b>Logo Exploration</h3>
+      <p>A set of concepts for a wellness label: leaf petals, mandala forms, a tree that becomes a profile, and a floral wreath. Each one is tested in silver, on black and on light grey.</p>
+      <p>The goal was a calm, refined mark that still feels natural and organic.</p>
+      <div class="tags"><span>Concepts</span><span>Logo</span><span>Colourways</span></div>
+    </div>
+    <div class="board"><div class="grid c2 free" style="gap:12px">
+      <img class="zoom" src="assets/img/logo/silverleaf-6.jpg" alt="Silver Leaf wordmark" style="grid-column:span 2;border-radius:14px" loading="lazy">
+      <img class="zoom" src="assets/img/logo/silverleaf-2.jpg" alt="Silver Leaf tree concept" style="border-radius:14px" loading="lazy">
+      <img class="zoom" src="assets/img/logo/silverleaf-1.jpg" alt="Silver Leaf petal concept" style="border-radius:14px" loading="lazy">
+      <img class="zoom" src="assets/img/logo/silverleaf-3.jpg" alt="Silver Leaf mandala concept" style="border-radius:14px" loading="lazy">
+      <img class="zoom" src="assets/img/logo/silverleaf-4.jpg" alt="Silver Leaf drop concept" style="border-radius:14px" loading="lazy">
+      <img class="zoom" src="assets/img/logo/silverleaf-5.jpg" alt="Silver Leaf wreath concept" style="border-radius:14px" loading="lazy">
+      <img class="zoom" src="assets/img/logo/silverleaf-v3.jpg" alt="Silver Leaf final" style="border-radius:14px" loading="lazy">
+    </div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="intro reveal">
+    <div>
+      <h3><b>Virco</b>Logo</h3>
+      <p>A bright, energetic splash mark built from a single burst shape, paired with a corporate "V" for Virco SG that is made from small dots.</p>
+      <p>Warm gold and orange on dark charcoal give both versions a confident, memorable look.</p>
+      <div class="tags"><span>Logo</span><span>Brand Mark</span></div>
+    </div>
+    <div class="board"><div class="grid c2 free" style="gap:12px">
+      <img class="zoom" src="assets/img/logo/virco-1.jpg" alt="Virco splash logo" style="grid-column:span 2;border-radius:14px" loading="lazy">
+      <img class="zoom" src="assets/img/logo/virco-2.jpg" alt="Virco SG logo" style="grid-column:span 2;border-radius:14px" loading="lazy">
+    </div></div>
+  </div>
+</section>
+
+<!-- THANKS -->
+<footer class="thanks grain" id="contact">
+  <svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg>
+  <div>
+    <h2>THANKS FOR<br>WATCHING!</h2>
+    <p class="by">by <b>RISHITHA L. SHILPA</b><small>All rights reserved. © 2026</small></p>
+  </div>
+  <div class="cta"><b>Let's work together!</b><br>Drop me a message anytime.<br><a href="mailto:rishitha.lak@gmail.com">Say hello →</a><br><a class="cv-link" href="assets/cv/Rishitha_L_Shilpa_CV.pdf" download>Download my CV</a></div>
+</footer>
+
+<nav class="dock" aria-label="Sections">
+  <a href="#cv">CV</a><a href="#uiux">UI/UX</a><a href="#web">Web</a><a href="#social">Social</a><a href="#branding">Branding</a><a href="#contact">Contact</a>
+</nav>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image preview"><button aria-label="Close">×</button><img alt=""></div>
 
 <script>
-const navToggle=document.getElementById('nav-toggle'),navMenu=document.getElementById('nav-menu');
-navToggle.addEventListener('click',()=>{
-  navToggle.classList.toggle('open');navMenu.classList.toggle('open');
-  document.body.style.overflow=navMenu.classList.contains('open')?'hidden':'';
+// About portrait fallback: swap broken photo for the monogram
+document.querySelectorAll('.portrait img').forEach(function(img){
+  img.onerror=function(){img.outerHTML='<svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg>'};
+  if(img.complete&&!img.naturalWidth)img.onerror();
 });
-navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-  navToggle.classList.remove('open');navMenu.classList.remove('open');document.body.style.overflow='';
-}));
 
-const progressBar=document.getElementById('scroll-progress');
-window.addEventListener('scroll',()=>{
-  const h=document.documentElement;
-  const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
-  progressBar.style.width=pct+'%';
-},{passive:true});
+// Reveal on scroll
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
 
-const io=new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightbox-img'),lbVideo=document.getElementById('lightbox-video'),lbGallery=document.getElementById('lightbox-gallery');
-document.querySelectorAll('[data-full],[data-gallery]').forEach(el=>{
-  el.addEventListener('click',(e)=>{
-    e.stopPropagation();
-    if(el.dataset.gallery){
-      lbGallery.innerHTML=el.dataset.gallery.split(',').map(src=>`<img src="${src}" alt="">`).join('');
-      lbGallery.style.display='flex';
-      lbImg.style.display='none';lbImg.src='';
-      lbVideo.pause();lbVideo.removeAttribute('src');lbVideo.style.display='none';
-    }else{
-      lbGallery.style.display='none';lbGallery.innerHTML='';
-      lbImg.style.display='block';lbImg.src=el.dataset.full;
-      if(el.dataset.video){lbVideo.src=el.dataset.video;lbVideo.style.display='block';lbVideo.play()}
-      else{lbVideo.removeAttribute('src');lbVideo.style.display='none'}
-    }
-    lb.classList.add('open');document.body.style.overflow='hidden';
+// Long-page previews scroll on hover
+document.querySelectorAll('.vp').forEach(function(vp){
+  var img=vp.querySelector('img');
+  vp.addEventListener('mouseenter',function(){
+    var dist=img.offsetHeight-vp.clientHeight;
+    if(dist>0){img.style.setProperty('--d',Math.min(12,Math.max(2,dist/600))+'s');img.style.transform='translateY(-'+dist+'px)'}
   });
+  vp.addEventListener('mouseleave',function(){img.style.setProperty('--d','1.2s');img.style.transform=''});
+  vp.addEventListener('click',function(){open(img.src)});
 });
-lb.addEventListener('click',()=>{
-  lb.classList.remove('open');lbImg.src='';document.body.style.overflow='';
-  lbVideo.pause();lbVideo.removeAttribute('src');lbVideo.style.display='none';
-  lbGallery.style.display='none';lbGallery.innerHTML='';
-});
+
+// Lightbox
+var lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+function open(src){lbImg.src=src;lb.classList.add('on');lb.scrollTop=0;document.body.style.overflow='hidden'}
+function close(){lb.classList.remove('on');document.body.style.overflow=''}
+document.querySelectorAll('.zoom').forEach(function(i){i.addEventListener('click',function(){open(i.src)})});
+lb.addEventListener('click',close);
+addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+
+// Floating dock: show after hero, highlight current chapter
+var dock=document.querySelector('.dock'),links=[].slice.call(dock.querySelectorAll('a'));
+var ids=links.map(function(a){return a.getAttribute('href').slice(1)});
+function onScroll(){
+  dock.classList.toggle('on',scrollY>innerHeight*.8);
+  var cur=null;ids.forEach(function(id){var el=document.getElementById(id);if(el.getBoundingClientRect().top<innerHeight*.4)cur=id});
+  links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')==='#'+cur)});
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
 </script>
 </body>
 </html>
