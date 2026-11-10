@@ -39,9 +39,6 @@ a{color:inherit;text-decoration:none}
 .grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.12;mix-blend-mode:overlay;border-radius:inherit;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* monogram */
-.mark{width:88px;height:88px;color:#fff}
-.mark.dark{color:var(--orange)}
 
 /* glass pill */
 .chip{display:inline-block;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -52,7 +49,6 @@ a{color:inherit;text-decoration:none}
 .hero,.thanks{color:#fff}
 .hero{min-height:calc(100vh - 28px);margin:14px;border-radius:clamp(18px,2vw,30px);padding:36px var(--gut) 56px;display:flex;flex-direction:column;
   background:var(--ribs),var(--fire);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.hero .mark{width:clamp(64px,6.5vw,104px);height:auto}
 .hero-photo{position:absolute;right:0;bottom:0;height:100%;width:auto;max-width:62%;object-fit:cover;object-position:left bottom;z-index:-1;
   mix-blend-mode:luminosity;filter:contrast(1.45) brightness(.62);
   -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(0deg,transparent 0%,#000 18%);-webkit-mask-composite:source-in;
@@ -60,7 +56,7 @@ a{color:inherit;text-decoration:none}
   opacity:0;animation:fadein 1.4s .2s ease forwards}
 @keyframes fadein{to{opacity:1}}
 .hero::before{content:"";position:absolute;inset:0;background:var(--ribs);pointer-events:none;z-index:0;border-radius:inherit}
-.hero>.mark,.hero-body{position:relative;z-index:1}
+.hero-body{position:relative;z-index:1}
 .hero-body{margin-top:auto}
 .year{font-weight:300;font-size:clamp(48px,7vw,120px);line-height:.9;letter-spacing:-.05em;opacity:0;animation:up .9s .1s cubic-bezier(.2,.7,.2,1) forwards}
 .big{font-weight:500;font-size:clamp(78px,17.5vw,360px);line-height:.86;letter-spacing:-.075em;margin:.02em 0 .14em -.05em;padding-right:.1em;
@@ -81,7 +77,6 @@ a{color:inherit;text-decoration:none}
 .about .chip:hover{background:var(--orange);border-color:var(--orange);color:#fff}
 .portrait{aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:var(--ribs),linear-gradient(160deg,#d9532a,#6e250d 70%,#1a0b06);display:grid;place-items:center;box-shadow:0 30px 80px -40px rgba(232,88,42,.6)}
 .portrait img{width:100%;height:100%;object-fit:cover}
-.portrait .mark{width:46%;height:auto}
 .about h2{font-weight:500;font-size:clamp(26px,2.6vw,42px);letter-spacing:-.04em;margin-bottom:10px}
 .about p{font-size:clamp(15px,1.25vw,20px);font-weight:300;line-height:1.5;margin-bottom:34px;max-width:60ch;color:var(--muted)}
 .about .state{font-size:clamp(28px,3.2vw,54px);line-height:1.04;font-weight:300;letter-spacing:-.045em;margin:10px 0 40px;
@@ -131,8 +126,7 @@ a{color:inherit;text-decoration:none}
 .slide::before{width:70vw;height:70vw;right:-40vw;top:-34vw;background:radial-gradient(closest-side,rgba(232,88,42,.16),rgba(232,88,42,.05) 60%,transparent)}
 .slide::after{width:55vw;height:40vw;left:-24vw;bottom:-24vw;background:radial-gradient(closest-side,rgba(232,88,42,.09),transparent)}
 .slide>*{position:relative;z-index:1}
-.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;font-size:clamp(13px,1.1vw,18px);font-weight:400;letter-spacing:-.02em;color:var(--muted);margin-bottom:clamp(30px,5vh,60px)}
-.bar .mark{width:clamp(44px,4vw,68px);height:auto}
+.bar{display:grid;grid-template-columns:1fr 1fr;align-items:center;font-size:clamp(13px,1.1vw,18px);font-weight:400;letter-spacing:-.02em;color:var(--muted);margin-bottom:clamp(30px,5vh,60px)}
 .bar span:last-child{text-align:right}
 
 /* chapter divider */
@@ -140,7 +134,6 @@ a{color:inherit;text-decoration:none}
 .chapter-in{position:relative;border-radius:clamp(18px,2vw,30px);padding:36px var(--gut) clamp(70px,10vh,120px);
   background:var(--ribs),var(--fire);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 .chapter .bar{color:rgba(255,255,255,.8)}
-.chapter .bar .mark{color:#fff}
 .chapter-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:30px}
 .others{display:flex;flex-direction:column;gap:.25em;font-size:clamp(20px,2.6vw,44px);font-weight:300;letter-spacing:-.04em;color:rgba(255,255,255,.38)}
 .others b{font-weight:600}
@@ -201,7 +194,9 @@ a{color:inherit;text-decoration:none}
 /* ---------- THANKS ---------- */
 .thanks{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:30px;margin:14px;border-radius:clamp(18px,2vw,30px);padding:clamp(70px,12vh,130px) var(--gut);
   background:var(--ribs),var(--fire);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.thanks .mark{width:clamp(100px,11vw,190px);height:auto}
+.thanks>div:first-child{grid-column:2}
+.thanks .cta{grid-column:3}
+.thanks>div:first-child,.thanks .cta{grid-row:1}
 .thanks h2{font-size:clamp(44px,5.4vw,100px);line-height:.92;font-weight:500;text-align:center;letter-spacing:-.06em;
   background:linear-gradient(180deg,#fff 40%,rgba(255,255,255,.5));-webkit-background-clip:text;background-clip:text;color:transparent}
 .thanks .by{text-align:center;margin-top:40px;font-size:clamp(16px,1.4vw,24px);font-weight:300;letter-spacing:-.02em}
@@ -249,33 +244,26 @@ a{color:inherit;text-decoration:none}
   .portrait{max-width:420px}
   .sites,.sites.c4{grid-template-columns:1fr}
   .grid.c4{grid-template-columns:repeat(2,1fr)}
-  .bar{grid-template-columns:1fr auto}
+  .bar{grid-template-columns:1fr}
   .bar span:first-child{display:none}
   .chapter-in{padding-left:20px;padding-right:20px}
   .title{white-space:normal}
   .thanks{text-align:center;justify-items:center}
+  .thanks>div:first-child,.thanks .cta{grid-column:auto;grid-row:auto}
   .dock a{padding:8px 11px;font-size:13px}
   .links{grid-template-columns:1fr;gap:0}
   .links dd{text-align:left;margin-bottom:8px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.year,.big,.chips,.google,.reveal{opacity:1;transform:none}}
+/* private visitor counter (owner device only) */
+.views{position:fixed;left:16px;bottom:16px;z-index:60;background:#111;color:#fff;border-radius:999px;padding:8px 16px;font-size:13px;letter-spacing:-.01em;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}
+.views b{color:var(--orange-hi);font-weight:600}
 </style>
 </head>
 <body>
 
-<!-- reusable monogram -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="mono" viewBox="0 0 120 120">
-    <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="5"/>
-    <path d="M8 66 H112" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-    <text x="60" y="56" text-anchor="middle" font-family="Inter Tight,sans-serif" font-weight="800" font-size="40" letter-spacing="-1" fill="currentColor">RLS</text>
-    <text x="60" y="90" text-anchor="middle" font-family="Inter Tight,sans-serif" font-weight="500" font-size="13" letter-spacing="4" fill="currentColor">DESIGN</text>
-  </symbol>
-</svg>
-
 <!-- HERO -->
 <header class="hero grain" id="top">
-  <svg class="mark" viewBox="0 0 120 120" role="img" aria-label="Rishitha monogram"><use href="#mono"/></svg>
   <img class="hero-photo" src="assets/img/me-hero.jpg" alt="Rishitha seated in a light suit">
   <div class="hero-body">
     <div class="year">2026</div>
@@ -322,7 +310,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- EXPERIENCE (from CV/Rishitha_CV_Master.docx) -->
 <section class="slide" id="cv">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="intro reveal">
     <div>
       <h3><b>Experience</b>&amp; Skills</h3>
@@ -381,7 +369,7 @@ a{color:inherit;text-decoration:none}
 <!-- ============ 01 UI/UX ============ -->
 <section class="chapter" id="uiux">
   <div class="chapter-in grain">
-    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
     <div class="chapter-grid">
       <div class="others"><a href="#web"><b>02.</b> Web Design</a><a href="#social"><b>03.</b> Social Media</a><a href="#branding"><b>04.</b> Branding</a></div>
       <h2 class="title"><b>01.</b> UI/UX</h2>
@@ -391,7 +379,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="intro reveal">
     <div>
       <h3><b>Lovcation</b>Mobile App</h3>
@@ -431,7 +419,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="pair reveal">
     <div>
       <div class="board"><div class="grid">
@@ -461,7 +449,7 @@ a{color:inherit;text-decoration:none}
 <!-- ============ 02 WEB ============ -->
 <section class="chapter" id="web">
   <div class="chapter-in grain">
-    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
     <div class="chapter-grid">
       <div class="others"><a href="#uiux"><b>01.</b> UI/UX</a><a href="#social"><b>03.</b> Social Media</a><a href="#branding"><b>04.</b> Branding</a></div>
       <h2 class="title"><b>02.</b> Web Design</h2>
@@ -471,7 +459,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="intro reveal">
     <div>
       <h3><b>Read Wave</b>Case Study</h3>
@@ -505,7 +493,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="pair reveal">
     <div>
       <div class="board"><div class="grid c2 wide">
@@ -535,7 +523,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="sites c4 reveal">
     <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/aspley.jpg" alt="Aspley Fish Bar website" loading="lazy"></div></div><figcaption><b>Aspley Fish Bar</b><span>Restaurant</span></figcaption></figure>
     <figure class="site"><div class="browser"><i><b></b></i><div class="vp"><img src="assets/img/web/pillarbox.jpg" alt="Pillar Box website" loading="lazy"></div></div><figcaption><b>Pillar Box</b><span>Hospitality</span></figcaption></figure>
@@ -554,7 +542,7 @@ a{color:inherit;text-decoration:none}
 <!-- ============ 03 SOCIAL ============ -->
 <section class="chapter" id="social">
   <div class="chapter-in grain">
-    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
     <div class="chapter-grid">
       <div class="others"><a href="#uiux"><b>01.</b> UI/UX</a><a href="#web"><b>02.</b> Web Design</a><a href="#branding"><b>04.</b> Branding</a></div>
       <h2 class="title"><b>03.</b> Social Media</h2>
@@ -564,7 +552,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="intro reveal">
     <div>
       <h3><b>Dr Paul</b>Pet Wellness</h3>
@@ -604,7 +592,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="pair reveal">
     <div>
       <div class="board"><div class="grid">
@@ -639,7 +627,7 @@ a{color:inherit;text-decoration:none}
 <!-- ============ 04 BRANDING ============ -->
 <section class="chapter" id="branding">
   <div class="chapter-in grain">
-    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+    <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
     <div class="chapter-grid">
       <div class="others"><a href="#uiux"><b>01.</b> UI/UX</a><a href="#web"><b>02.</b> Web Design</a><a href="#social"><b>03.</b> Social Media</a></div>
       <h2 class="title"><b>04.</b> Branding</h2>
@@ -649,7 +637,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="intro reveal">
     <div>
       <h3><b>Butter Boutique</b>Packaging</h3>
@@ -667,7 +655,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="intro reveal">
     <div>
       <h3><b>Petivu</b>Logo</h3>
@@ -683,7 +671,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="intro reveal">
     <div>
       <h3><b>Silver Leaf</b>Logo Exploration</h3>
@@ -704,7 +692,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <section class="slide">
-  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><svg class="mark dark" viewBox="0 0 120 120"><use href="#mono"/></svg><span>2026</span></div>
+  <div class="bar"><span>Rishitha L. Shilpa – Portfolio</span><span>2026</span></div>
   <div class="intro reveal">
     <div>
       <h3><b>Virco</b>Logo</h3>
@@ -721,7 +709,6 @@ a{color:inherit;text-decoration:none}
 
 <!-- THANKS -->
 <footer class="thanks grain" id="contact">
-  <svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg>
   <div>
     <h2>THANKS FOR<br>WATCHING!</h2>
     <p class="by">by <b>RISHITHA L. SHILPA</b><small>All rights reserved. © 2026</small></p>
@@ -738,7 +725,7 @@ a{color:inherit;text-decoration:none}
 <script>
 // About portrait fallback: swap broken photo for the monogram
 document.querySelectorAll('.portrait img').forEach(function(img){
-  img.onerror=function(){img.outerHTML='<svg class="mark" viewBox="0 0 120 120"><use href="#mono"/></svg>'};
+  img.onerror=function(){img.outerHTML=''};
   if(img.complete&&!img.naturalWidth)img.onerror();
 });
 
@@ -774,6 +761,25 @@ function onScroll(){
   links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')==='#'+cur)});
 }
 addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+// Unique visitor counter: each device/browser counts once (localStorage flag).
+// Owner device (opened once with ?owner=rishitha) is never counted and is the only one that sees the badge.
+(function(){
+  var API='https://abacus.jasoncameron.dev/',KEY='rishluck-portfolio/unique-visitors';
+  var ls={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  var q=new URLSearchParams(location.search);
+  if(q.get('owner')==='rishitha'){ls.set('rls_owner','1');ls.set('rls_counted','1')}
+  if(q.get('owner')==='off'){ls.set('rls_owner','')}
+  var owner=ls.get('rls_owner')==='1',local=/^(localhost|127\.|0\.0\.0\.0)/.test(location.hostname)||location.protocol==='file:';
+  if(owner){
+    fetch(API+'get/'+KEY).then(function(r){return r.json()}).then(function(d){
+      var el=document.createElement('div');el.className='views';
+      el.innerHTML='<b>'+(d.value||0)+'</b> unique visitors';document.body.appendChild(el);
+    }).catch(function(){});
+  }else if(!local&&!ls.get('rls_counted')&&!/bot|crawl|spider|lighthouse|headless/i.test(navigator.userAgent)){
+    ls.set('rls_counted','1');fetch(API+'hit/'+KEY).catch(function(){});
+  }
+})();
 </script>
 </body>
 </html>
